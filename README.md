@@ -3,14 +3,18 @@
 #### Setup
 
 1. Install ruby 2.4.1
-2. Install bundler for the latest version `gem install bundler`
+2. `gem install bundler`
 3. `bundle install`
-4. `git remote add staging https://git.heroku.com/tightfit-staging.git`
-5. `git remote add heroku https://git.heroku.com/tightfit.git`
-
-Always deploy to staging first with `git push staging`
-
+4.
 ```
 $ echo "RACK_ENV=development" >>.env
 $ echo "PORT=3000" >> .env
 ```
+5. `rake db:create`
+6. `git remote add staging https://git.heroku.com/tightfit-staging.git`
+  https://tightfit-staging.herokuapp.com/
+7. `git remote add heroku https://git.heroku.com/tightfit.git`
+  https://tightfit.herokuapp.com/
+
+Always deploy to staging first with `git push staging`
+
