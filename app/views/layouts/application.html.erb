@@ -6,7 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script type="text/javascript" src="//cdn.popcash.net/pop.js"></script>
@@ -30,17 +30,22 @@
       });
     </script>
   </head>
-
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">TightFit</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/live">Cams</a></li>
-        <li><a href="/">Videos</a></li>
-        <li><a href="">Login</a></li>
-      </ul>
+<body>
+  <div class="hide-for-small-only">
+    <div id="navWrapper">
+      <a href="/">
+        <i class="medium material-icons">personal_video</i>
+        <label>main</label>
+      </a>
+      <a href="/live">
+        <i class="medium material-icons">filter_center_focus</i>
+        <label>live cams</label>
+      </a>
+      <a href="#0" class="cd-top waves-effect.waves-orange">
+        <i class="medium material-icons">expand_less</i>
+        <label>top<label>
+      </a>
     </div>
-  </nav>
 
   <body>
     <div class="main-container">
@@ -52,5 +57,7 @@
         <p>Hate popups? Refer a friend and we'll disable them for you.</p>
       </div>
     </div>
+  </div>
+  <%= yield %>
   </body>
 </html>
