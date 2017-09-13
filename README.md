@@ -17,4 +17,5 @@ $ echo "PORT=3000" >> .env
   https://tightfit.herokuapp.com/
 
 Always deploy to staging first with `git push staging`
-
+Run migrations with:
+> heroku run rake db:migrate --remote staging
