@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -12,6 +12,8 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.0.rc2'
 gem 'sass-rails', '~> 5.0'
+gem 'materialize-sass'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'better_errors'
