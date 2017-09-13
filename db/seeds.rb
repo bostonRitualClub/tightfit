@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+videos = VideoLink.create(link: 'https://www.pornhub.com/embed/ph5991c8c0c0a31', name: 'first_video')
