@@ -1,6 +1,6 @@
-class AddVideoLink < ActiveRecord::Migration[5.1]
+class AddVideoLinks < ActiveRecord::Migration[5.1]
   def change
-    create_table :video_link do |t|
+    create_table :video_links do |t|
       t.string :link, null: false
       t.string :name, null: false
       t.jsonb :metadata
