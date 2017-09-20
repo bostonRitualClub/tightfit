@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @videos = Video.all
     render "welcome/index"
   end
 

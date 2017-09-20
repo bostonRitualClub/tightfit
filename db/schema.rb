@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170913013303) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "videos", force: :cascade do |t|
+  create_table "video_link", force: :cascade do |t|
     t.string "link", null: false
     t.string "name", null: false
     t.jsonb "metadata"
