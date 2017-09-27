@@ -14,6 +14,7 @@ gem 'rails', '~> 5.1.0.rc2'
 gem 'sass-rails', '~> 5.0'
 gem 'materialize-sass'
 gem 'jquery-rails'
+gem 'rubocop'
 gem 'uglifier'
 
 group :development, :test do
