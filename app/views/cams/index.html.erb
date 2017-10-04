@@ -4,9 +4,12 @@
   Chaterbates top chat room iframe: (we get $1 per sign up from this)
   <!-- <iframe src='https:\/\/chaturbate.com\/affiliates\/in\/?tour=NxHf&campaign=9RAIT&track=embed&bgcolor=transparent&disable_sound=1&embed_video_only=0&target=_parent' height=523 width=850 style='border: none;'></iframe> -->
   <% @model_list.each do |model| %>
-    <%= model.image_url %>
-    <%= model.age %>
-    <%= model.username %>
-    <%= model.is_hd %>
+    <div>
+      <img src="<%= model.image_url %>">
+      <%= model.image_url %>
+      <%= model.age %>
+      <%= model.username %>
+      <%= model.is_hd %>
+    </div>
   <% end %>
 </div>

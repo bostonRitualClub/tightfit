@@ -4,7 +4,7 @@ class CamsController < ApplicationController
     @model_list = []
     c_response = ExternalApiRequest.new(base_uri: 'https://chaturbate.com/affiliates/api/onlinerooms/?format=json&wm=9RAIT', http_method: 'get').response_body
     c_response_list = JSON.parse(c_response)
-    c_response_list.each do |x|
+    c_response_list[0..10].each do |x|
       cam_model = CamModel.new
       cam_model.image_url = x["image_url"]
       cam_model.age = x["age"]
