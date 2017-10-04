@@ -1,4 +1,4 @@
-class Advertisement < Activerecord::Base
-  validates :name
-  validates :link
+class Advertisement < ActiveRecord::Base
+  validates :name, presence: true
+  validates :link, presence: true
 end
