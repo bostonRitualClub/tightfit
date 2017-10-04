@@ -9,14 +9,15 @@ gem 'rails', '~> 5.1.0.rc2'
 gem 'sass-rails', '~> 5.0'
 gem 'materialize-sass'
 gem 'jquery-rails'
-gem 'rubocop'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.5.2'
   gem 'better_errors'
   gem 'capybara', '~> 2.13.0'
   gem 'pry', platforms: [:mri, :mingw, :x64_mingw]
   gem 'selenium-webdriver'
+  gem 'rubocop'
 end
 
 group :development do
