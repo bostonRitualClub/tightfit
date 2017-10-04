@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'test_helper'
 
 describe Advertisement do
   it { is_expected.to validate_presence_of(:name) }

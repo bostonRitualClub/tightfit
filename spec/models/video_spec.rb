@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'test_helper'
 
 describe Video do
 
