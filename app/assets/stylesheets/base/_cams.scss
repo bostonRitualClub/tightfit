@@ -1,0 +1,12 @@
+
+.cam-model-container {
+  display: flex;
+  flex-wrap: wrap;
+  
+  .cam-model {
+    display: inline-block;
+    flex-grow: 1;
+    margin: 1em;
+    width: calc(25% - 2em);    
+  }
+}
