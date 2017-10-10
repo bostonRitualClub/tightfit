@@ -10,7 +10,7 @@
 $ echo "RACK_ENV=development" >>.env
 $ echo "PORT=3000" >> .env
 ```
-5. `rake db:create`
+5. `rake db:create` or `rake db:setup`
 6. `git remote add staging https://git.heroku.com/tightfit-staging.git`
   https://tightfit-staging.herokuapp.com/
 7. `git remote add heroku https://git.heroku.com/tightfit.git`
@@ -19,3 +19,4 @@ $ echo "PORT=3000" >> .env
 Always deploy to staging first with `git push staging`
 Run migrations with:
 > heroku run rake db:migrate --remote staging
+
