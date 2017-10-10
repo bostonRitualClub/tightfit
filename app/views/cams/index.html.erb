@@ -5,13 +5,36 @@
   <div class="cam-model-container">
   <% @model_list.each_with_index do |model, index| %>
     <div class="cam-model">
-      <a href="<% model.chat_room_url_revshare %>">
-        <img class="responsive-img" src="<%= model.image_url %>" />
+      <!-- this url doesn't work with AdBlocker -->
+      <a href="<%= model.chat_room_url %>">
+        <% if model.is_hd %>
+          <img class="model_overlay--hd responsive-img" src="<%= model.image_url %>" />
+        <% else %>
+          <img class="model_overlay--nonhd responsive-img" src="<%= model.image_url %>" />
+        <% end %>
       </a>
-      
-      <%= model.age %>
-      <%= model.username %>
-      <%= model.is_hd %>
+      <div class="cam-model__details">
+        <span class="cam-model__details--username"><%= model.username %></span>
+        <span class=""><%= model.age %></span>
+      </div>
+      <div class="cam-model__status">
+        <% if model.current_show == 'public' %>
+          <span class="text-green"><%= model.current_show %></span>
+        <% elsif model.current_show == 'private' %>
+          <span class="text-red"><%= model.current_show %></span>
+        <% elsif model.current_show == 'away' || 'hidden' %>
+          <span class="text-grey"><%= model.current_show %></span>
+        <% end %>
+      </div>
+      <div class="cam-model__subject">
+        <%= model.room_subject %>
+      </div>
+      <div class="cam-model__metainfo">
+        <% if model.is_hd %>
+          <span><b>HD</b></span>
+        <% end %>
+        <span class=""><%= model.num_users %></span>
+      </div>
     </div>
   <% end %>
   </div>
