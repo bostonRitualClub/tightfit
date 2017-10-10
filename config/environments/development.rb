@@ -6,7 +6,8 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  # Do not eager load code on boot.
+  # https://stackoverflow.com/questions/38198668/rails-5-load-lib-files-in-production
+  # The default is false. We turn it to on so we can use load files in /lib
   config.eager_load = true
 
   # Show full error reports.
