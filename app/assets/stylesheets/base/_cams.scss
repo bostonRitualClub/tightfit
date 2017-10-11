@@ -7,16 +7,15 @@
 
 .cam-model {
   display: inline-block;
-  flex-grow: 1;
   margin: 1em;
   width: calc(25% - 2em);
-  
+
   .cam-model__details {
     display: flex;
     justify-content: space-between;
 
     .cam-model__details--username {
       font-weight: bold;
-    }    
+    }
   }
 }
