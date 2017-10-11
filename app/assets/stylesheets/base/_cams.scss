@@ -1,0 +1,21 @@
+
+.cam-model-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em 0 0 0;
+}
+
+.cam-model {
+  display: inline-block;
+  margin: 1em;
+  width: calc(25% - 2em);
+
+  .cam-model__details {
+    display: flex;
+    justify-content: space-between;
+
+    .cam-model__details--username {
+      font-weight: bold;
+    }
+  }
+}

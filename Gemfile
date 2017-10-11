@@ -11,6 +11,7 @@ gem 'materialize-sass'
 gem 'jquery-rails'
 gem 'rubocop'
 gem 'uglifier'
+gem 'httmultiparty', '~> 0.3.16'
 
 group :development, :test do
   gem 'better_errors'
