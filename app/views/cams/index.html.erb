@@ -1,42 +1,97 @@
+<!-- <script type="text/javascript" src="/assets/cams.js"></script> -->
 <!-- Chaterbates top chat room iframe: (we get $1 per sign up from this) -->
 <!-- <iframe src='https:\/\/chaturbate.com\/affiliates\/in\/?tour=NxHf&campaign=9RAIT&track=embed&bgcolor=transparent&disable_sound=1&embed_video_only=0&target=_parent' height=523 width=850 style='border: none;'></iframe> -->
+<script>
+var slider = document.getElementById('test-slider');
+
+noUiSlider.create(slider, {
+	start: [20, 80],
+	connect: true,
+	range: {
+		'min': 0,
+		'max': 100
+	}
+});
+// noUiSlider.create(slider, {
+//  start: [20, 80],
+//  connect: true,
+//  step: 1,
+//  orientation: 'horizontal', // 'horizontal' or 'vertical'
+//  range: {
+//    'min': 0,
+//    'max': 100
+//  },
+//  format: wNumb({
+//    decimals: 0
+//  })
+// });
+</script>
+
 Hate ads? Sign-up and we'll hide them for you :)
 
-<div class="container">
-  <div class="cam-model-container">
-  <% @model_list.each_with_index do |model, index| %>
-    <div class="cam-model">
-      <!-- this url doesn't work with AdBlocker -->
-      <a href="<%= model.chat_room_url %>">
-        <% if model.is_hd %>
-          <img class="model_overlay--hd responsive-img" src="<%= model.image_url %>" />
-        <% else %>
-          <img class="model_overlay--nonhd responsive-img" src="<%= model.image_url %>" />
-        <% end %>
-      </a>
-      <div class="cam-model__details">
-        <span class="cam-model__details--username"><%= model.username %></span>
-        <span class=""><%= model.age %></span>
+<form action="#">
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="input_text" type="text" data-length="10">
+          <label for="input_text">Search...</label>
+        </div>
       </div>
-      <div class="cam-model__status">
-        <% if model.current_show == 'public' %>
-          <span class="text-green"><%= model.current_show %></span>
-        <% elsif model.current_show == 'private' %>
-          <span class="text-red"><%= model.current_show %></span>
-        <% elsif model.current_show == 'away' || 'hidden' %>
-          <span class="text-grey"><%= model.current_show %></span>
-        <% end %>
-      </div>
-      <div class="cam-model__subject">
-        <%= model.room_subject %>
-      </div>
-      <div class="cam-model__metainfo">
-        <% if model.is_hd %>
-          <span><b>HD</b></span>
-        <% end %>
-        <span class=""><%= model.num_users %></span>
-      </div>
-    </div>
-  <% end %>
+    </form>
   </div>
+  <p>
+    <input type="checkbox" class="filled-in" id="search-female"/>
+    <label for="search-female">Female</label>
+  </p>
+  <p>
+    <input type="checkbox" class="filled-in" id="search-male"/>
+    <label for="search-male">Male</label>
+  </p>
+  <p>
+    <input type="checkbox" class="filled-in" id="search-couple"/>
+    <label for="search-couple">Couple</label>
+  </p>
+  <p>
+    <input type="checkbox" class="filled-in" id="search-trans"/>
+    <label for="search-trans">Trans</label>
+  </p>
+  
+  <div id="test-slider"></div>
+<form>
+
+<% @model_list.each_with_index do |model, index| %>
+  <div class="cam-model">
+    <!-- this url doesn't work with AdBlocker -->
+    <a href="<%= model.chat_room_url %>">
+      <% if model.is_hd %>
+        <img class="model_overlay--hd responsive-img" src="<%= model.image_url %>" />
+      <% else %>
+        <img class="model_overlay--nonhd responsive-img" src="<%= model.image_url %>" />
+      <% end %>
+    </a>
+    <div class="cam-model__details">
+      <span class="cam-model__details--username"><%= model.username %></span>
+      <span class=""><%= model.age %></span>
+    </div>
+    <div class="cam-model__status">
+      <% if model.current_show == 'public' %>
+        <span class="text-green"><%= model.current_show %></span>
+      <% elsif model.current_show == 'private' %>
+        <span class="text-red"><%= model.current_show %></span>
+      <% elsif model.current_show == 'away' || 'hidden' %>
+        <span class="text-grey"><%= model.current_show %></span>
+      <% end %>
+    </div>
+    <div class="cam-model__subject">
+      <%= model.room_subject %>
+    </div>
+    <div class="cam-model__metainfo">
+      <% if model.is_hd %>
+        <span><b>HD</b></span>
+      <% end %>
+      <span class=""><%= model.num_users %></span>
+    </div>
+  </div>
+<% end %>
 </div>
