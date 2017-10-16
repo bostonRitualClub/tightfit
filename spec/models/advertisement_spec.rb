@@ -1,11 +1,6 @@
 require 'test_helper'
 
-describe Video do
-
-  # Associations
+describe Advertisement do
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:link) }
-  it { is_expected.to validate_presence_of(:tag) }
-
-
 end
