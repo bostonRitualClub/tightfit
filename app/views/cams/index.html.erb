@@ -1,36 +1,67 @@
 <!-- Chaterbates top chat room iframe: (we get $1 per sign up from this) -->
 <!-- <iframe src='https:\/\/chaturbate.com\/affiliates\/in\/?tour=NxHf&campaign=9RAIT&track=embed&bgcolor=transparent&disable_sound=1&embed_video_only=0&target=_parent' height=523 width=850 style='border: none;'></iframe> -->
-Hate ads? Sign-up and we'll hide them for you :)
 
 <form action="#">
   <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="input_text" type="text" data-length="10">
-          <label for="input_text">Search...</label>
-        </div>
-      </div>
-    </form>
+    <div class="input-field">
+      <i class="material-icons prefix">search</i>
+      <input id="input_text" type="text" data-length="50">
+      <label for="input_text">Search...</label>
+    </div>
   </div>
-  <p>
-    <input type="checkbox" class="filled-in" id="search-female"/>
-    <label for="search-female">Female</label>
-  </p>
-  <p>
-    <input type="checkbox" class="filled-in" id="search-male"/>
-    <label for="search-male">Male</label>
-  </p>
-  <p>
-    <input type="checkbox" class="filled-in" id="search-couple"/>
-    <label for="search-couple">Couple</label>
-  </p>
-  <p>
-    <input type="checkbox" class="filled-in" id="search-trans"/>
-    <label for="search-trans">Trans</label>
-  </p>
-  Age
-  Viewers
+
+  <div class="row">
+    <div class="col s3 m3 l3" style="padding-left: 45px;">
+      <div class="input-field">
+        <input placeholder="18" id="age_start" type="text" class="validate">
+        <input placeholder="99" id="age_end" type="text" class="validate">
+        <label for="first_name">Age</label>
+      </div>
+    </div>
+    <div class="col s3 m3 l3">
+      <div class="input-field">
+        <input placeholder="0" id="view_start" type="text" class="validate">
+        <input placeholder="50000" id="view_end" type="text" class="validate">
+        <label for="first_name">Viewers</label>
+      </div>
+    </div>
+
+    <div class="col s6 m6 l6">
+      <div>
+        <input type="checkbox" class="filled-in" id="search-female"/>
+        <label for="search-female">Female</label>
+      </div>
+      <div>
+        <input type="checkbox" class="filled-in" id="search-male"/>
+        <label for="search-male">Male</label>
+      </div>
+      <div>
+        <input type="checkbox" class="filled-in" id="search-couple"/>
+        <label for="search-couple">Couple</label>
+      </div>
+      <div>
+        <input type="checkbox" class="filled-in" id="search-trans"/>
+        <label for="search-trans">Trans</label>
+      </div>
+      <div>
+        <input type="checkbox" class="filled-in" id="search-hd">
+        <label for="search-hd">HD only?</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field">
+      <i class="material-icons prefix">location_on</i>
+      <select>
+        <option value="" disabled selected>Choose country</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+      <label>Geographic Location</label>
+    </div>
+  </div>
 <form>
 
 <% @model_list.in_groups_of(5).each do |group| %>

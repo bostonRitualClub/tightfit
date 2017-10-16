@@ -1,16 +1,35 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .container {
-  margin: 0 auto;
+  margin: 0 5% ;
   max-width: 1280px;
   width: 90%;
 }
+
+.right-container {
+  width: 5%;
+}
+
 @media #{$medium-and-up} {
   .container {
-    width: 85%;
+    width: 90%;
+  }
+  
+  .right-container {
+    width: 10%;
   }
 }
 @media #{$large-and-up} {
   .container {
-    width: 70%;
+    width: 80%;
+  }
+
+  .right-container {
+    width: 20%;
   }
 }
 .container .row {
