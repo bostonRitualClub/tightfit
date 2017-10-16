@@ -1,41 +1,106 @@
 <!-- Chaterbates top chat room iframe: (we get $1 per sign up from this) -->
 <!-- <iframe src='https:\/\/chaturbate.com\/affiliates\/in\/?tour=NxHf&campaign=9RAIT&track=embed&bgcolor=transparent&disable_sound=1&embed_video_only=0&target=_parent' height=523 width=850 style='border: none;'></iframe> -->
 
-<div class="container">
-  <div class="cam-model-container">
-  <% @model_list.each_with_index do |model, index| %>
-    <div class="cam-model">
-      <!-- this url doesn't work with AdBlocker -->
-      <a href="<%= model.chat_room_url %>">
-        <% if model.is_hd %>
-          <img class="model_overlay--hd responsive-img" src="<%= model.image_url %>" />
-        <% else %>
-          <img class="model_overlay--nonhd responsive-img" src="<%= model.image_url %>" />
-        <% end %>
-      </a>
-      <div class="cam-model__details">
-        <span class="cam-model__details--username"><%= model.username %></span>
-        <span class=""><%= model.age %></span>
-      </div>
-      <div class="cam-model__status">
-        <% if model.current_show == 'public' %>
-          <span class="text-green"><%= model.current_show %></span>
-        <% elsif model.current_show == 'private' %>
-          <span class="text-red"><%= model.current_show %></span>
-        <% elsif model.current_show == 'away' || 'hidden' %>
-          <span class="text-grey"><%= model.current_show %></span>
-        <% end %>
-      </div>
-      <div class="cam-model__subject">
-        <%= model.room_subject %>
-      </div>
-      <div class="cam-model__metainfo">
-        <% if model.is_hd %>
-          <span><b>HD</b></span>
-        <% end %>
-        <span class=""><%= model.num_users %></span>
+<form action="#">
+  <div class="row">
+    <div class="input-field">
+      <i class="material-icons prefix">search</i>
+      <input id="input_text" type="text" data-length="50">
+      <label for="input_text">Search...</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s3 m3 l3" style="padding-left: 45px;">
+      <div class="input-field">
+        <input placeholder="18" id="age_start" type="text" class="validate">
+        <input placeholder="99" id="age_end" type="text" class="validate">
+        <label for="first_name">Age</label>
       </div>
     </div>
-  <% end %>
+    <div class="col s3 m3 l3">
+      <div class="input-field">
+        <input placeholder="0" id="view_start" type="text" class="validate">
+        <input placeholder="50000" id="view_end" type="text" class="validate">
+        <label for="first_name">Viewers</label>
+      </div>
+    </div>
+
+    <div class="col s6 m6 l6">
+      <div>
+        <input type="checkbox" class="filled-in" id="search-female"/>
+        <label for="search-female">Female</label>
+      </div>
+      <div>
+        <input type="checkbox" class="filled-in" id="search-male"/>
+        <label for="search-male">Male</label>
+      </div>
+      <div>
+        <input type="checkbox" class="filled-in" id="search-couple"/>
+        <label for="search-couple">Couple</label>
+      </div>
+      <div>
+        <input type="checkbox" class="filled-in" id="search-trans"/>
+        <label for="search-trans">Trans</label>
+      </div>
+      <div>
+        <input type="checkbox" class="filled-in" id="search-hd">
+        <label for="search-hd">HD only?</label>
+      </div>
+    </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="input-field">
+      <i class="material-icons prefix">location_on</i>
+      <select>
+        <option value="" disabled selected>Choose country</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+      <label>Geographic Location</label>
+    </div>
+  </div>
+<form>
+
+<% @model_list.in_groups_of(5).each do |group| %>
+  <div class="row">
+    <% group.each do |model| %>
+      <% if model %>
+        <div class="col s6 m4 l2 cam-model">
+          <!-- this url doesn't work with AdBlocker -->
+          <a href="<%= model.chat_room_url %>">
+            <% if model.is_hd %>
+              <img class="cam-model--hd responsive-img" src="<%= model.image_url %>" />
+            <% else %>
+              <img class="cam-model--nonhd responsive-img" src="<%= model.image_url %>" />
+            <% end %>
+          </a>
+          <div class="cam-model__details">
+            <span class="cam-model__details--username"><%= model.username %></span>
+            <span class=""><%= model.age %></span>
+          </div>
+          <div class="cam-model__status">
+            <% if model.current_show == 'public' %>
+              <span class="text-green"><%= model.current_show %></span>
+            <% elsif model.current_show == 'private' %>
+              <span class="text-red"><%= model.current_show %></span>
+            <% elsif model.current_show == 'away' || 'hidden' %>
+              <span class="text-grey"><%= model.current_show %></span>
+            <% end %>
+          </div>
+          <div class="cam-model__subject">
+            <!-- <%= model.room_subject %> -->
+          </div>
+          <div class="cam-model__metainfo">
+            <% if model.is_hd %>
+              <span><b>HD</b></span>
+            <% end %>
+            <span class=""><%= model.num_users %></span>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

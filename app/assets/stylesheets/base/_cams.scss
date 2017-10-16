@@ -1,15 +1,8 @@
-
-.cam-model-container {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 1em 0 0 0;
-}
-
 .cam-model {
-  display: inline-block;
-  margin: 1em;
-  width: calc(25% - 2em);
-
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin: 0 1em;
+  
   .cam-model__details {
     display: flex;
     justify-content: space-between;
@@ -18,4 +11,19 @@
       font-weight: bold;
     }
   }
+  
+  .cam-model--hd {
+    padding: 1em 0;
+  }
+  
+  .cam-model--nonhd {
+    padding: 1em 0;
+  }
+}
+
+#age_start,
+#age_end,
+#view_start,
+#view_end {
+  width: 5em !important;
 }

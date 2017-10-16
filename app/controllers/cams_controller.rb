@@ -8,7 +8,7 @@ class CamsController < ApplicationController
     c_response = response.response_body
     if response.response_code.to_s == "200"
       c_response_list = JSON.parse(c_response)
-      c_response_list[0..19].each do |x|
+      c_response_list[0..59].each do |x|
         cam_model = CamModel.new
         cam_model.age = x["age"]
         cam_model.chat_room_url_revshare = x["chat_room_url_revshare"]

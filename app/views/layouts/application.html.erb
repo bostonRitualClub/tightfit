@@ -6,6 +6,29 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script type="text/javascript" src="//cdn.popcash.net/pop.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108122519-1"></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script type="text/javascript">
+      // Popcash
+      var uid = '177959';
+      var wid = '383255';
+
+      // Global site tag (gtag.js) - Google Analytics
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-108122519-1');
+
+      // Google Adsense
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-9798034887311128",
+        enable_page_level_ads: true
+      });
+    </script>
   </head>
 
   <nav>
@@ -20,6 +43,14 @@
   </nav>
 
   <body>
-    <%= yield %>
+    <div class="main-container">
+      <div class="container">
+        <%= yield %>
+      </div>
+      <div class="right-container">
+        <p>ads belong here.</p>
+        <p>Hate popups? Refer a friend and we'll disable them for you.</p>
+      </div>
+    </div>
   </body>
 </html>
