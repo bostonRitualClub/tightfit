@@ -8,6 +8,49 @@ nav {
   background-color: $brown-sugar;
 }
 
-.nav-wrapper {
-  margin: 0 5em;
+#navWrapper{
+  background: rgba(19,19,19,0.8);
+  background: -moz-linear-gradient(left, rgba(19,19,19,0.8) 0%, rgba(19,19,19,0) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(19,19,19,0.8)), color-stop(100%, rgba(19,19,19,0)));
+  background: -webkit-linear-gradient(left, rgba(19,19,19,0.8) 0%, rgba(19,19,19,0) 100%);
+  background: -o-linear-gradient(left, rgba(19,19,19,0.8) 0%, rgba(19,19,19,0) 100%);
+  background: -ms-linear-gradient(left, rgba(19,19,19,0.8) 0%, rgba(19,19,19,0) 100%);
+  background: linear-gradient(to right, rgba(19,19,19,0.8) 0%, rgba(19,19,19,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#131313', endColorstr='#131313', GradientType=1 );
+
+  display: flex;
+  position: fixed;
+  padding-right: 20%;
+  width: 100%;
+  height: 50px;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 1;
+  text-align: center;
+
+  a{
+    display: block;
+    margin: 0 50px;
+    transition: 0.5s ease;
+    i{
+      color: white;
+      font-size: 40px;
+    }
+
+    label{
+      color: white;
+    }
+    &:hover{
+       background-color: $brown-sugar;
+       border-bottom-right-radius: 20%;
+       border-top-left-radius: 20%;
+       border-bottom-left-radius:1%;
+       border-top-right-radius: 1%;
+       padding: 0 20px;
+    }
+  }
+}
+
+#filterForm{
+  padding-top: 75px;
 }

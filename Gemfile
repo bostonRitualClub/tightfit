@@ -7,9 +7,13 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.0.rc2'
 gem 'sass-rails', '~> 5.0'
+gem 'materialize-sass'
+gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'rubocop'
 gem 'uglifier'
+gem 'foundation-rails', '5.4.3.1'
+gem 'rails_12factor', group: :production
 gem 'httmultiparty', '~> 0.3.16'
 
 group :development, :test do
