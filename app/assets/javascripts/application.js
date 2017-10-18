@@ -17,4 +17,16 @@
 
 $(document).ready(function() {
   $('select').material_select();
+
+  var scroll_top_duration = 700;
+  var $back_to_top = $('.cd-top');
+
+  //smooth scroll to top
+  $back_to_top.on('click', function(event){
+		event.preventDefault();
+		$('body,html').animate({
+			scrollTop: 0 ,
+		 	}, scroll_top_duration
+		);
+	});
 });
