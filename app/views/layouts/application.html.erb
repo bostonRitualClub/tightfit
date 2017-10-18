@@ -12,6 +12,7 @@
     <script type="text/javascript" src="//cdn.popcash.net/pop.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108122519-1"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
     <script type="text/javascript">
       // Popcash
       var uid = '177959';
@@ -28,6 +29,8 @@
         google_ad_client: "ca-pub-9798034887311128",
         enable_page_level_ads: true
       });
+
+      // Exoclick
     </script>
   </head>
   <body>
@@ -52,8 +55,12 @@
           <%= yield %>
         </div>
         <div class="right-container">
-          <p>ads belong here.</p>
-          <p>Hate popups? Refer a friend and we'll disable them for you.</p>
+          <script type="text/javascript">
+            var ad_idzone = "2808188", ad_width = "160", ad_height = "600";
+          </script>
+          <script type="text/javascript" src="https://ads.exosrv.com/ads.js"></script>
+          <noscript><a href="https://main.exosrv.com/img-click.php?idzone=2808188" target="_blank"><img src="https://syndication.exosrv.com/ads-iframe-display.php?idzone=2808188&output=img&type=160x600" width="160" height="600"></a></noscript>
+          <!-- <p>Hate popups? Refer a friend and we'll disable them for you.</p> -->
         </div>
       </div>
     </div>
