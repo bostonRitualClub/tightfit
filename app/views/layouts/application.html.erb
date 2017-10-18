@@ -30,34 +30,32 @@
       });
     </script>
   </head>
-<body>
-  <div class="hide-for-small-only">
-    <div id="navWrapper">
-      <a href="/">
-        <i class="medium material-icons">personal_video</i>
-        <label>main</label>
-      </a>
-      <a href="/live">
-        <i class="medium material-icons">filter_center_focus</i>
-        <label>live cams</label>
-      </a>
-      <a href="#0" class="cd-top waves-effect.waves-orange">
-        <i class="medium material-icons">expand_less</i>
-        <label>top<label>
-      </a>
-    </div>
-
   <body>
-    <div class="main-container">
-      <div class="container">
-        <%= yield %>
+    <div class="hide-for-small-only">
+      <div id="navWrapper">
+        <a href="/">
+          <i class="medium material-icons">personal_video</i>
+          <label>main</label>
+        </a>
+        <a href="/live">
+          <i class="medium material-icons">filter_center_focus</i>
+          <label>live cams</label>
+        </a>
+        <a href="#0" class="cd-top waves-effect.waves-orange">
+          <i class="medium material-icons">expand_less</i>
+          <label>top<label>
+        </a>
       </div>
-      <div class="right-container">
-        <p>ads belong here.</p>
-        <p>Hate popups? Refer a friend and we'll disable them for you.</p>
+
+      <div class="main-container">
+        <div class="container">
+          <%= yield %>
+        </div>
+        <div class="right-container">
+          <p>ads belong here.</p>
+          <p>Hate popups? Refer a friend and we'll disable them for you.</p>
+        </div>
       </div>
     </div>
-  </div>
-  <%= yield %>
   </body>
 </html>
