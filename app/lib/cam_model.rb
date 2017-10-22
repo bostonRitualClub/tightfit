@@ -13,7 +13,8 @@ class CamModel
                 :iframe_embed_revshare,
                 :iframe_embed,
                 :is_new,
-                :location
+                :location,
+                :seconds_online
 
   def initialize
   end

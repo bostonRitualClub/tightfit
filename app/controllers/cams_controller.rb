@@ -9,6 +9,8 @@ class CamsController < ApplicationController
       raw_model_list.select! { |x| included_genders.include?(x.gender) }
     else
       # We want to filter by females by default
+      params["gender"] = Hash.new()
+      params["gender"]["female"] = 'f'
       raw_model_list.select! { |x| x.gender == "f" }
     end
     
@@ -48,6 +50,7 @@ class CamsController < ApplicationController
         cam_model.is_hd = x["is_hd"]
         cam_model.is_new = x["is_new"]
         cam_model.location = x["location"]
+        cam_model.seconds_online = x["seconds_online"]
         cam_model.num_followers = x["num_followers"]
         cam_model.num_users = x["num_users"]
         cam_model.room_subject = x["room_subject"]

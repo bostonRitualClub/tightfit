@@ -79,36 +79,38 @@
   <div class="row">
     <% group.each do |model| %>
       <% if model %>
-        <div class="col s6 m4 l2 cam-model">
-          <!-- this url doesn't work with AdBlocker -->
-          <a href="<%= model.chat_room_url %>">
-            <% if model.is_hd %>
-              <img class="cam-model--hd responsive-img" src="<%= model.image_url %>" />
-            <% else %>
-              <img class="cam-model--nonhd responsive-img" src="<%= model.image_url %>" />
-            <% end %>
-          </a>
-          <div class="cam-model__details">
-            <span class="cam-model__details--username"><%= model.username %></span>
-            <span class=""><%= model.age %></span>
-          </div>
-          <div class="cam-model__status">
-            <% if model.current_show == 'public' %>
-              <span class="text-green"><%= model.current_show %></span>
-            <% elsif model.current_show == 'private' %>
-              <span class="text-red"><%= model.current_show %></span>
-            <% elsif model.current_show == 'away' || 'hidden' %>
-              <span class="text-grey"><%= model.current_show %></span>
-            <% end %>
-          </div>
-          <div class="cam-model__subject">
-            <!-- <%= model.room_subject %> -->
-          </div>
-          <div class="cam-model__metainfo">
-            <% if model.is_hd %>
-              <span><b>HD</b></span>
-            <% end %>
-            <span class=""><%= model.num_users %></span>
+        <div class="cam-model-container col s6 m4 l5ths">
+          <div class="cam-model">
+            <!-- this url doesn't work with AdBlocker -->
+            <a href="<%= model.chat_room_url %>">
+              <% if model.is_hd %>
+                <img class="cam-model--hd responsive-img" src="<%= model.image_url %>" />
+              <% else %>
+                <img class="cam-model--nonhd responsive-img" src="<%= model.image_url %>" />
+              <% end %>
+            </a>
+            <div class="cam-model__details">
+              <span class="cam-model__details--username"><%= model.username %></span>
+              <span class=""><%= model.age %></span>
+            </div>
+            <div class="cam-model__status">
+              <% if model.current_show == 'public' %>
+                <span class="text-green"><%= model.current_show %></span>
+              <% elsif model.current_show == 'private' %>
+                <span class="text-red"><%= model.current_show %></span>
+              <% elsif model.current_show == 'away' || 'hidden' %>
+                <span class="text-grey"><%= model.current_show %></span>
+              <% end %>
+            </div>
+            <div class="cam-model__subject">
+              <!-- <%= model.room_subject %> -->
+            </div>
+            <div class="cam-model__metainfo">
+              <% if model.is_hd %>
+                <span><b>HD</b></span>
+              <% end %>
+              <span class=""><%= model.num_users %></span>
+            </div>
           </div>
         </div>
       <% end %>

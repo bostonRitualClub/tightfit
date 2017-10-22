@@ -50,17 +50,21 @@
         </a>
       </div>
       <!-- Content begin -->
-      <div class="main-container">
-        <div class="container">
-          <%= yield %>
-        </div>
-        <div class="right-container">
-          <!-- <p>Hate popups? Refer a friend and we'll disable them for you.</p> -->
-          <script type="text/javascript">
-            var ad_idzone = "2808188", ad_width = "160", ad_height = "600";
-          </script>
-          <script type="text/javascript" src="https://ads.exosrv.com/ads.js"></script>
-          <noscript><a href="https://main.exosrv.com/img-click.php?idzone=2808188" target="_blank"><img src="https://syndication.exosrv.com/ads-iframe-display.php?idzone=2808188&output=img&type=160x600" width="160" height="600"></a></noscript>
+      <div class="container">
+        <div class="row">
+          <div class="col l11">
+            <%= yield %>
+          </div>
+          <div class="col l1">
+            <!-- <p>Hate popups? Refer a friend and we'll disable them for you.</p> -->
+            <div class="side-banner">
+              <script type="text/javascript">
+                var ad_idzone = "2808188", ad_width = "160", ad_height = "600";
+              </script>
+              <script type="text/javascript" src="https://ads.exosrv.com/ads.js"></script>
+              <noscript><a href="https://main.exosrv.com/img-click.php?idzone=2808188" target="_blank"><img src="https://syndication.exosrv.com/ads-iframe-display.php?idzone=2808188&output=img&type=160x600" width="160" height="600"></a></noscript>
+            </div>
+          </div>
         </div>
       </div>
       <!-- Content end -->
