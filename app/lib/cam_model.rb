@@ -8,7 +8,12 @@ class CamModel
                 :room_subject,
                 :username,
                 :chat_room_url,
-                :current_show
+                :current_show,
+                :gender,
+                :iframe_embed_revshare,
+                :iframe_embed,
+                :is_new,
+                :location
 
   def initialize
   end

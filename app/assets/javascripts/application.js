@@ -29,4 +29,12 @@ $(document).ready(function() {
 		 	}, scroll_top_duration
 		);
 	});
+
+  $("#search-submit").on("click", function(e) {
+    e.preventDefault();
+    var searchModelForm = $('#search-models');
+    var emptyInputFields = $('#search-models input:text').filter(function() { return $(this).val() == ""; });
+    emptyInputFields.attr('disabled', true);
+    searchModelForm.submit();
+  });
 });
