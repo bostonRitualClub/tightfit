@@ -1,8 +1,8 @@
 .cam-model {
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin: 0 1em;
-  
+  padding: 0.5em;
+
   .cam-model__details {
     display: flex;
     justify-content: space-between;
@@ -13,11 +13,9 @@
   }
   
   .cam-model--hd {
-    padding: 1em 0;
   }
   
   .cam-model--nonhd {
-    padding: 1em 0;
   }
 }
 
