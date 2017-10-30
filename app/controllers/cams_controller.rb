@@ -33,6 +33,7 @@ class CamsController < ApplicationController
     # do this with infinite scroll
     model_list = Array.new()
     response = ExternalApiRequest.new(base_uri: 'https://chaturbate.com/affiliates/api/onlinerooms/?format=json&wm=9RAIT', http_method: 'get')
+    # response = ExternalApiRequest.new(base_uri: 'https://pto.awecr.com/xml/feed/index.php?siteId=jasmin&psId=tightfitcams&psTool=213_1&psProgram=pps&campaignId=&category=girl&limit=10&imageSizes=320x240&imageType=erotic&showOffline=0&extendedDetails=1&responseFormat=json&performerId=&subAffId={SUBAFFID}', http_method: 'get')
 
     c_response = response.response_body
     if response.response_code.to_s == "200"
