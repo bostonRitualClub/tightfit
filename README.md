@@ -23,5 +23,5 @@ You can deploy to staging with: `git push staging`
 You can deploy to production with `git push heroku`
 
 After deploying you can run migrations with either:
-`heroku run rake db:migrate --remote staging`
-`heroku run rake db:migrate --remote heroku`
+
+`heroku run rake db:migrate --remote staging` or `heroku run rake db:migrate --remote heroku`
