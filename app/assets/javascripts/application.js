@@ -37,4 +37,6 @@ $(document).ready(function() {
     emptyInputFields.attr('disabled', true);
     searchModelForm.submit();
   });
+
+  
 });
