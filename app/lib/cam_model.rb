@@ -1,4 +1,6 @@
 class CamModel
+  include ActiveModel::Model
+
   attr_accessor :age,
                 :chat_room_url_revshare,
                 :image_url,
@@ -17,6 +19,14 @@ class CamModel
                 :seconds_online
 
   def initialize
+    # id = generate_id
   end
 
+  # def generate_id
+  #   Random.rand.to_s[2..14]
+  # end
+
+  # def persisted?
+  #   self.id == generate_id
+  # end
 end
