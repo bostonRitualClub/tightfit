@@ -96,8 +96,8 @@
               <% elsif model.current_show == 'away' || 'hidden' %><span class="text-grey"><%= model.current_show %></span>
               <% end %>
               <div class="cam-model__metainfo--item">
-                <!-- Explore this if it svgs don't load -->
-                <!-- <%= show_svg(symbols.svg) %> -->
+                <!-- Explore this erb if it svgs don't load -->
+                <!-- show_svg(symbols.svg) -->
                 <img src="assets/clock.svg" alt="Seconds online:" />
                 <span class=""><%= model.seconds_online %></span>
               </div>
