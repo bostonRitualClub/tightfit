@@ -54,8 +54,10 @@ class CamsController < ApplicationController
         cam_model.seconds_online = x["seconds_online"]
         cam_model.num_followers = x["num_followers"]
         cam_model.num_users = x["num_users"]
-        cam_model.room_subject = x["room_subject"]
         cam_model.username = x["username"]
+        # limits to 150 characters
+        # cam_model.room_subject = '%-150.150s' % x["room_subject"])
+        cam_model.room_subject = x["room_subject"]
         model_list << cam_model
       end
     end
