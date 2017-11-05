@@ -13,7 +13,7 @@ class CamsController < ApplicationController
       params["gender"]["female"] = 'f'
       raw_model_list.select! { |x| x.gender == "f" }
     end
-    
+
     params.keys.each do |param|
       raw_model_list.select! { |x| x.username.include? params["search"] } if param == "search"
       raw_model_list.select! { |x| x.age >= params["age_start"].to_i } if param == "age_start"
@@ -22,9 +22,19 @@ class CamsController < ApplicationController
       raw_model_list.select! { |x| x.num_users <= params["view_end"].to_i } if param == "view_end"
       raw_model_list.select! { |x| x.is_hd == true } if param == "is_hd"
     end
-    
+
     @model_list = raw_model_list
     @model_list
+  end
+
+  def show_cam_model
+    binding.pry
+    @model = CamModel.find_by(id: params[:id])
+    # if @model
+    #  render @model.iframe_embed
+    # end
+
+    render layout: "show_location"
   end
 
   private
@@ -61,7 +71,11 @@ class CamsController < ApplicationController
         model_list << cam_model
       end
     end
-    
+
     model_list
-  end  
+  end
+
+  def model_params
+    params.permit(:id)
+  end
 end
