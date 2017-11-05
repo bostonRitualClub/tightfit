@@ -14,12 +14,13 @@
   .cam-model__image {
     display:inline-block;
     position:relative;
+    min-height: 190px;
     
     .hd-icon {
-      bottom:1em;
-      height: 2em;
+      bottom:10px;
+      height:2em;
       position:absolute;
-      right:0.5em;
+      right:5px;
     }
   }
   

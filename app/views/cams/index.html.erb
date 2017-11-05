@@ -81,7 +81,7 @@
       <% if model %>
         <div class="cam-model-container col s6 m4 l5ths">
           <div class="cam-model">
-            <!-- this url doesn't work with AdBlocker -->
+            <%= link_to "show_model", action_controller_path(:url=> "model.chat_room_url") %>
             <div class="cam-model__details">
               <span class="cam-model__details--username"><%= model.username %></span>
               <span class="cam-model__details--age"><%= model.age %></span>
@@ -97,11 +97,11 @@
               <% end %>
               <div class="cam-model__metainfo--item">
                 <img src="assets/clock.svg" alt="Seconds online:" />
-                <span class=""><%= model.seconds_online %></span>
+                <span class=""><%= formatted_duration(model.seconds_online) %></span>
               </div>
               <div class="cam-model__metainfo--item">
                 <img src="assets/profile.svg" alt="Viewers:" />
-                <span class=""><%= model.num_users %></span>
+                <span class=""><%= number_with_delimiter(model.num_users, :delimiter => ',') %></span>
               </div>
             </div>
             <hr>
