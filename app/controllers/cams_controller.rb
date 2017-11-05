@@ -27,15 +27,20 @@ class CamsController < ApplicationController
     @model_list
   end
 
-  def show_cam_model
-    binding.pry
-    @model = CamModel.find_by(id: params[:id])
-    # if @model
-    #  render @model.iframe_embed
-    # end
-
-    render layout: "show_location"
+  def cam_model
+    @cam_model = CamModel.new
+    @cam_model.iframe_embed = params[:url]
+    render "show"
   end
+
+  # def show_cam_model
+  #   @model = CamModel.find_by(id: params[:id])
+  #   if @model
+  #    render @model.iframe_embed
+  #   end
+  # 
+  #   render "show_location"
+  # end
 
   private
 
