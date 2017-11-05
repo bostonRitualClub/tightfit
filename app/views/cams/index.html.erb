@@ -81,7 +81,6 @@
       <% if model %>
         <div class="cam-model-container col s6 m4 l5ths">
           <div class="cam-model">
-            <%= link_to "show_model", action_controller_path(:url=> "model.chat_room_url") %>
             <div class="cam-model__details">
               <span class="cam-model__details--username"><%= model.username %></span>
               <span class="cam-model__details--age"><%= model.age %></span>
@@ -106,7 +105,6 @@
             </div>
             <hr>
             <div class="cam-model__subject">
-              <!-- <a href="<%= model.chat_room_url %>">Pass this as a variable into model show page</a> -->
               <%= model.room_subject %>
             </div>
           </div>

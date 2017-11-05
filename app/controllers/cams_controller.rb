@@ -30,7 +30,7 @@ class CamsController < ApplicationController
   private
 
   def get_models
-    # do this with infinite scroll
+    # TODO: allow get_models to take in a page parameter for infinite scroll
     model_list = Array.new()
     response = ExternalApiRequest.new(base_uri: 'https://chaturbate.com/affiliates/api/onlinerooms/?format=json&wm=9RAIT', http_method: 'get')
     # response = ExternalApiRequest.new(base_uri: 'https://pto.awecr.com/xml/feed/index.php?siteId=jasmin&psId=tightfitcams&psTool=213_1&psProgram=pps&campaignId=&category=girl&limit=10&imageSizes=320x240&imageType=erotic&showOffline=0&extendedDetails=1&responseFormat=json&performerId=&subAffId={SUBAFFID}', http_method: 'get')
@@ -55,8 +55,6 @@ class CamsController < ApplicationController
         cam_model.num_followers = x["num_followers"]
         cam_model.num_users = x["num_users"]
         cam_model.username = x["username"]
-        # limits to 150 characters
-        # cam_model.room_subject = '%-150.150s' % x["room_subject"])
         cam_model.room_subject = x["room_subject"]
         model_list << cam_model
       end
