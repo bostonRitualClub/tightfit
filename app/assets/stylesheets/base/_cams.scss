@@ -14,7 +14,8 @@
   .cam-model__image {
     display:inline-block;
     position:relative;
-    min-height: 190px;
+    // Need a different way to deal with smaller chauterbate image
+    // min-height: 190px;
     
     .hd-icon {
       bottom:10px;
