@@ -21,23 +21,25 @@
     </script>
   </head>
   <body>
+    <!-- hide-for-small-only doesn't do anything yet -->
     <div class="hide-for-small-only">
-      <div id="navWrapper">
-        <a href="/">
-          <i class="medium material-icons">personal_video</i>
-          <label>main</label>
-        </a>
-        <a href="/live">
-          <i class="medium material-icons">filter_center_focus</i>
-          <label>live cams</label>
-        </a>
-        <a href="#420" class="cd-top waves-effect.waves-orange">
-          <i class="medium material-icons">expand_less</i>
-          <label>top<label>
-        </a>
-        <!-- Exoclick direct link -->
-        <a href="https://syndication.exosrv.com/splash.php?idzone=2822640&return_url=" target="_blank">Check out our partners!</a>
-      </div>
+      <nav>
+        <div class="nav-wrapper container">
+          <img src="assets/tight_fit_logo.png" style="height: 100%;"/>
+          <form id="nav-search-input" class="search-models" action="/cams" method="get">
+            <div class="input-field">
+              <i class="material-icons prefix">search</i>
+              <input id="input_text" name="search" type="text" value="<%= params[:search] %>" data-length="50">
+              <label for="input_text">Search...</label>
+            </div>
+          </form>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <!-- Exoclick direct link -->
+            <li><a href="https://syndication.exosrv.com/splash.php?idzone=2822640&return_url=" target="_blank">EXPLORE</a></li>
+          </ul>
+        </div>
+      </nav>
+      
       <!-- Content begin -->
       <div class="container">
         <div class="row">

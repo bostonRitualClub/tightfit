@@ -15,7 +15,7 @@ nav {
 
   color: $navbar-font-color;
   @extend .z-depth-1;
-  background-color: $primary-color;
+  background-color: black;
   width: 100%;
   height: $navbar-height-mobile;
   line-height: $navbar-line-height-mobile;
@@ -140,7 +140,8 @@ nav {
       }
 
       &:hover {
-        background-color: rgba(0,0,0,.1);
+        color: #ffffff;
+        background-color: $brown-sugar;
       }
     }
 
@@ -205,4 +206,11 @@ nav {
   .navbar-fixed {
     height: $navbar-height;
   }
+}
+
+#nav-search-input {
+  position: absolute;
+  top: 0;
+  left: 380px;
+  width: 50%;
 }
