@@ -14,9 +14,11 @@ class CamModel
                 :iframe_embed,
                 :is_new,
                 :location,
-                :seconds_online
+                :seconds_online,
+                :active
 
   def initialize
+    active = false
   end
 
 end

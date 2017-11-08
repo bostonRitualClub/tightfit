@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004010034) do
+ActiveRecord::Schema.define(version: 20171108033247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,26 @@ ActiveRecord::Schema.define(version: 20171004010034) do
   create_table "advertisements", force: :cascade do |t|
     t.string "link", null: false
     t.string "name", null: false
+  end
+
+  create_table "cam_models", force: :cascade do |t|
+    t.integer "age"
+    t.string "chat_room_url_revshare"
+    t.string "chat_room_url"
+    t.string "current_show"
+    t.string "gender"
+    t.string "image_url"
+    t.string "iframe_embed_revshare"
+    t.string "iframe_embed"
+    t.boolean "is_hd"
+    t.boolean "is_new"
+    t.integer "seconds_online"
+    t.integer "num_users"
+    t.integer "num_followers"
+    t.string "location"
+    t.string "username"
+    t.string "room_subject"
+    t.boolean "active"
   end
 
   create_table "videos", force: :cascade do |t|
