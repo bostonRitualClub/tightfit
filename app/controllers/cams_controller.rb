@@ -13,7 +13,7 @@ class CamsController < ApplicationController
       params["gender"]["female"] = 'f'
       @cam_model_list.select! { |x| x.gender == "f" }
     end
-    
+
     params.keys.each do |param|
       @cam_model_list.select! { |x| x.username.include? params["search"] } if param == "search"
       @cam_model_list.select! { |x| x.age >= params["age_start"].to_i } if param == "age_start"
@@ -22,14 +22,14 @@ class CamsController < ApplicationController
       @cam_model_list.select! { |x| x.num_users <= params["view_end"].to_i } if param == "view_end"
       @cam_model_list.select! { |x| x.is_hd == true } if param == "is_hd"
     end
-    
+
     @cam_model_list
   end
-  
+
   def update_cam_models(cam_model_list)
     cam_model_list.each do |cam_model|
       cam_model_params = #some logic here to turn cam_model into a params list
-      
+
       cam_model.age = x["age"]
       cam_model.chat_room_url_revshare = x["chat_room_url_revshare"]
       cam_model.chat_room_url = x["chat_room_url"]
@@ -46,12 +46,16 @@ class CamsController < ApplicationController
       cam_model.num_users = x["num_users"]
       cam_model.username = x["username"]
       cam_model.room_subject = x["room_subject"]
-      
+
       @cam_model = CamModel.new(cam_model_params)
       @cam_model.save
     end
   end
-  
+
+  def cam_model
+    render "show"
+  end
+
   private
 
   def get_cam_models
@@ -84,7 +88,7 @@ class CamsController < ApplicationController
         cam_model_list << cam_model
       end
     end
-    
+
     cam_model_list
-  end  
+  end
 end
