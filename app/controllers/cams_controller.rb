@@ -27,15 +27,20 @@ class CamsController < ApplicationController
     @model_list
   end
 
-  def show_cam_model
-    binding.pry
-    @model = CamModel.find_by(id: params[:id])
-    # if @model
-    #  render @model.iframe_embed
-    # end
-
-    render layout: "show_location"
+  def cam_model
+    @cam_model = CamModel.new
+    @cam_model.iframe_embed = params[:url]
+    render "show"
   end
+
+  # def show_cam_model
+  #   @model = CamModel.find_by(id: params[:id])
+  #   if @model
+  #    render @model.iframe_embed
+  #   end
+  #
+  #   render "show_location"
+  # end
 
   private
 
@@ -64,8 +69,10 @@ class CamsController < ApplicationController
         cam_model.seconds_online = x["seconds_online"]
         cam_model.num_followers = x["num_followers"]
         cam_model.num_users = x["num_users"]
-        cam_model.room_subject = x["room_subject"]
         cam_model.username = x["username"]
+        # limits to 150 characters
+        # cam_model.room_subject = '%-150.150s' % x["room_subject"])
+        cam_model.room_subject = x["room_subject"]
         model_list << cam_model
       end
     end
