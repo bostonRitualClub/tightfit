@@ -1,4 +1,4 @@
-class CamsController < ApplicationController
+class CamModelsController < ApplicationController
 
   def index
     @cam_model_list = get_cam_models
@@ -60,56 +60,72 @@ class CamsController < ApplicationController
 
   def get_cam_models
     # TODO: allow get_cam_models to take in a page parameter for infinite scroll
-    cam_model_list = Array.new()
     response = ExternalApiRequest.new(base_uri: 'https://chaturbate.com/affiliates/api/onlinerooms/?format=json&wm=9RAIT', http_method: 'get')
-    # response = ExternalApiRequest.new(base_uri: 'https://pto.awecr.com/xml/feed/index.php?siteId=jasmin&psId=tightfitcams&psTool=213_1&psProgram=pps&campaignId=&category=girl&limit=10&imageSizes=320x240&imageType=erotic&showOffline=0&extendedDetails=1&responseFormat=json&performerId=&subAffId={SUBAFFID}', http_method: 'get')
+
+    CamModel.update_all(active: false)
+
     c_response = response.response_body
     if response.response_code.to_s == "200"
       c_response_list = JSON.parse(c_response)
-
       c_response_list.each do |x|
-        cam_model = CamModel.new
-        cam_model.age = x["age"]
-        cam_model.chat_room_url_revshare = x["chat_room_url_revshare"]
-        cam_model.chat_room_url = x["chat_room_url"]
-        cam_model.current_show = x["current_show"]
-        cam_model.gender = x["gender"]
-        cam_model.image_url = x["image_url"]
-        cam_model.iframe_embed_revshare = x["iframe_embed_revshare"]
-        cam_model.iframe_embed = x["iframe_embed"]
-        cam_model.is_hd = x["is_hd"]
-        cam_model.is_new = x["is_new"]
-        cam_model.location = x["location"]
-        cam_model.seconds_online = x["seconds_online"]
-        cam_model.num_followers = x["num_followers"]
-        cam_model.num_users = x["num_users"]
-        cam_model.username = x["username"]
-        cam_model.room_subject = x["room_subject"]
-
-        if CamModel.find(username: x['username'])
-          @cam_model = CamModel.find(username: x['username'])
-          @cam_model.update(cam_model_params)
-
-          # @cam_model.active = true
-
-          raise 'error saving cam model' unless @cam_model.save!
+        if CamModel.find_by(username: x['username'])
+          cam_model = CamModel.find_by(username: x['username'])
+          cam_model.update(
+            age:  x["age"],
+            chat_room_url_revshare:  x["chat_room_url_revshare"],
+            chat_room_url:  x["chat_room_url"],
+            current_show:  x["current_show"],
+            gender:  x["gender"],
+            image_url:  x["image_url"],
+            iframe_embed_revshare:  x["iframe_embed_revshare"],
+            iframe_embed:  x["iframe_embed"],
+            is_hd:  x["is_hd"],
+            is_new:  x["is_new"],
+            location:  x["location"],
+            seconds_online:  x["seconds_online"],
+            num_followers:  x["num_followers"],
+            num_users:  x["num_users"],
+            username:  x["username"],
+            room_subject:  x["room_subject"],
+            active:  true
+          )
         else
-          @cam_model = CamModel.new(cam_model_params)
-          @cam_model.save!
-        end
 
-        # delete_inactive_cam_models
+          CamModel.new.tap do |model|
+            model.age = x["age"]
+            model.chat_room_url_revshare = x["chat_room_url_revshare"]
+            model.chat_room_url = x["chat_room_url"]
+            model.current_show = x["current_show"]
+            model.gender = x["gender"]
+            model.image_url = x["image_url"]
+            model.iframe_embed_revshare = x["iframe_embed_revshare"]
+            model.iframe_embed = x["iframe_embed"]
+            model.is_hd = x["is_hd"]
+            model.is_new = x["is_new"]
+            model.location = x["location"]
+            model.seconds_online = x["seconds_online"]
+            model.num_followers = x["num_followers"]
+            model.num_users = x["num_users"]
+            model.username = x["username"]
+            model.room_subject = x["room_subject"]
+            model.active = true
+            binding.pry
+            model.save!
+          end
+        end
       end
     end
 
-    cam_model_list
+    delete_inactive_cam_models
+
+    CamModel.all
+  end
+
+  def delete_inactve_cam_models
+    CamModel.where(active: false).destroy_all
   end
 
   def cam_model_params
     params.permit(:age, :chat_room_url_revshare, :image_url, :is_hd, :num_followers, :num_users, :room_subject, :username, :chat_room_url, :current_show, :gender, :iframe_embed_revshare, :iframe_embed, :is_new, :location, :seconds_online, :active)
-  end
-
-  def delete_inactve_cam_models
-
   end
 end
