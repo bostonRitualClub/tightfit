@@ -1,59 +1,33 @@
 class CamModelsController < ApplicationController
 
   def index
-    @cam_model_list = get_cam_models
-    # update_cam_models(@cam_model_list)
+    @cam_model_list = CamModel.all
 
     if params["gender"]
       included_genders = params["gender"].values
-      @cam_model_list.select! { |x| included_genders.include?(x.gender) }
+      @cam_model_list = @cam_models_list.where(gender: included_genders)
     else
-      # We want to filter by females by default
-      params["gender"] = Hash.new()
-      params["gender"]["female"] = 'f'
-      @cam_model_list.select! { |x| x.gender == "f" }
+      @cam_model_list = @cam_model_list.where("gender = ?", "f")
     end
 
     params.keys.each do |param|
-      @cam_model_list.select! { |x| x.username.include? params["search"] } if param == "search"
-      @cam_model_list.select! { |x| x.age >= params["age_start"].to_i } if param == "age_start"
-      @cam_model_list.select! { |x| x.age <= params["age_end"].to_i } if param == "age_end"
-      @cam_model_list.select! { |x| x.num_users >= params["view_start"].to_i } if param == "view_start"
-      @cam_model_list.select! { |x| x.num_users <= params["view_end"].to_i } if param == "view_end"
-      @cam_model_list.select! { |x| x.is_hd == true } if param == "is_hd"
+      @cam_model_list = @cam_model_list.where("username LIKE ?", "%#{params["search"]}%") if param == "search"
+      @cam_model_list = @cam_model_list.where("age >= ?", params["age_start"]) if param == "age_start"
+      @cam_model_list = @cam_model_list.where("age <= ?", params["age_end"]) if param == "age_end"
+      @cam_model_list = @cam_model_list.where("num_users >= ?", params["view_start"]) if param == "view_start"
+      @cam_model_list = @cam_model_list.where("num_users <= ?", params["view_end"]) if param == "view_end"
+      @cam_model_list = @cam_model_list.where("is_hd = ?", params["is_hd"]) if param == "is_hd"
     end
 
     @cam_model_list
   end
 
-  # def update_cam_models(cam_model_list)
-  #   cam_model_list.each do |cam_model|
-  #     cam_model_params = #some logic here to turn cam_model into a params list
-  #
-  #     cam_model.age = x["age"]
-  #     cam_model.chat_room_url_revshare = x["chat_room_url_revshare"]
-  #     cam_model.chat_room_url = x["chat_room_url"]
-  #     cam_model.current_show = x["current_show"]
-  #     cam_model.gender = x["gender"]
-  #     cam_model.image_url = x["image_url"]
-  #     cam_model.iframe_embed_revshare = x["iframe_embed_revshare"]
-  #     cam_model.iframe_embed = x["iframe_embed"]
-  #     cam_model.is_hd = x["is_hd"]
-  #     cam_model.is_new = x["is_new"]
-  #     cam_model.location = x["location"]
-  #     cam_model.seconds_online = x["seconds_online"]
-  #     cam_model.num_followers = x["num_followers"]
-  #     cam_model.num_users = x["num_users"]
-  #     cam_model.username = x["username"]
-  #     cam_model.room_subject = x["room_subject"]
-  #
-  #     @cam_model = CamModel.new(cam_model_params)
-  #     @cam_model.save
-  #   end
-  # end
-
   def cam_model
     render "show"
+  end
+
+  def cam_model_refresh
+    get_cam_models
   end
 
   private
@@ -67,49 +41,48 @@ class CamModelsController < ApplicationController
     c_response = response.response_body
     if response.response_code.to_s == "200"
       c_response_list = JSON.parse(c_response)
-      c_response_list.each do |x|
-        if CamModel.find_by(username: x['username'])
-          cam_model = CamModel.find_by(username: x['username'])
+
+      c_response_list.each do |raw_model|
+        if CamModel.find_by(username: raw_model['username'])
+          cam_model = CamModel.find_by(username: raw_model['username'])
           cam_model.update(
-            age:  x["age"],
-            chat_room_url_revshare:  x["chat_room_url_revshare"],
-            chat_room_url:  x["chat_room_url"],
-            current_show:  x["current_show"],
-            gender:  x["gender"],
-            image_url:  x["image_url"],
-            iframe_embed_revshare:  x["iframe_embed_revshare"],
-            iframe_embed:  x["iframe_embed"],
-            is_hd:  x["is_hd"],
-            is_new:  x["is_new"],
-            location:  x["location"],
-            seconds_online:  x["seconds_online"],
-            num_followers:  x["num_followers"],
-            num_users:  x["num_users"],
-            username:  x["username"],
-            room_subject:  x["room_subject"],
+            age:  raw_model["age"],
+            chat_room_url_revshare:  raw_model["chat_room_url_revshare"],
+            chat_room_url:  raw_model["chat_room_url"],
+            current_show:  raw_model["current_show"],
+            gender:  raw_model["gender"],
+            image_url:  raw_model["image_url"],
+            iframe_embed_revshare:  raw_model["iframe_embed_revshare"],
+            iframe_embed:  raw_model["iframe_embed"],
+            is_hd:  raw_model["is_hd"],
+            is_new:  raw_model["is_new"],
+            location:  raw_model["location"],
+            seconds_online:  raw_model["seconds_online"],
+            num_followers:  raw_model["num_followers"],
+            num_users:  raw_model["num_users"],
+            username:  raw_model["username"],
+            room_subject:  raw_model["room_subject"],
             active:  true
           )
         else
-
           CamModel.new.tap do |model|
-            model.age = x["age"]
-            model.chat_room_url_revshare = x["chat_room_url_revshare"]
-            model.chat_room_url = x["chat_room_url"]
-            model.current_show = x["current_show"]
-            model.gender = x["gender"]
-            model.image_url = x["image_url"]
-            model.iframe_embed_revshare = x["iframe_embed_revshare"]
-            model.iframe_embed = x["iframe_embed"]
-            model.is_hd = x["is_hd"]
-            model.is_new = x["is_new"]
-            model.location = x["location"]
-            model.seconds_online = x["seconds_online"]
-            model.num_followers = x["num_followers"]
-            model.num_users = x["num_users"]
-            model.username = x["username"]
-            model.room_subject = x["room_subject"]
-            model.active = true
-            binding.pry
+            model["age"] = raw_model["age"]
+            model["chat_room_url_revshare"] = raw_model["chat_room_url_revshare"]
+            model["chat_room_url"] = raw_model["chat_room_url"]
+            model["current_show"] = raw_model["current_show"]
+            model["gender"] = raw_model["gender"]
+            model["image_url"] = raw_model["image_url"]
+            model["iframe_embed_revshare"] = raw_model["iframe_embed_revshare"]
+            model["iframe_embed"] = raw_model["iframe_embed"]
+            model["is_hd"] = raw_model["is_hd"]
+            model["is_new"] = raw_model["is_new"]
+            model["location"] = raw_model["location"]
+            model["seconds_online"] = raw_model["seconds_online"]
+            model["num_followers"] = raw_model["num_followers"]
+            model["num_users"] = raw_model["num_users"]
+            model["username"] = raw_model["username"]
+            model["room_subject"] = raw_model["room_subject"]
+            model["active"] = true
             model.save!
           end
         end
@@ -121,7 +94,7 @@ class CamModelsController < ApplicationController
     CamModel.all
   end
 
-  def delete_inactve_cam_models
+  def delete_inactive_cam_models
     CamModel.where(active: false).destroy_all
   end
 

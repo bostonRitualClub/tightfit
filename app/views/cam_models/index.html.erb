@@ -55,19 +55,6 @@
     </div>
   </div>
 
-  <!-- <div class="row">
-    <div class="input-field">
-      <i class="material-icons prefix">location_on</i>
-      <select>
-        <option value="" disabled selected>Choose country</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </select>
-      <label>Geographic Location</label>
-    </div>
-  </div> -->
-
   <div class="row text-right">
     <button id="search-submit" class="btn waves-effect waves-light">Submit
       <i class="material-icons right">send</i>
@@ -82,30 +69,30 @@
         <div class="cam-model-container col s6 m4 l5ths">
           <div class="cam-model">
             <div class="cam-model__details">
-              <span class="cam-model__details--username"><%= model.username %></span>
-              <span class="cam-model__details--age"><%= model.age %></span>
+              <span class="cam-model__details--username"><%= model["username"] %></span>
+              <span class="cam-model__details--age"><%= model["age"] %></span>
             </div>
             <div class="cam-model__image">
-                <img class="responsive-img" src="<%= model.image_url %>" />
-                <% if model.is_hd %><img class="hd-icon" src="assets/hd.svg" alt="HD stream" /><% end %>
+                <img class="responsive-img" src="<%= model["image_url"] %>" />
+                <% if model["is_hd"] %><img class="hd-icon" src="assets/hd.svg" alt="HD stream" /><% end %>
             </div>
             <div class="cam-model__metainfo">
-              <% if model.current_show == 'public' %><span class="text-green"><%= model.current_show %></span>
-              <% elsif model.current_show == 'private' %><span class="text-red"><%= model.current_show %></span>
-              <% elsif model.current_show == 'away' || 'hidden' %><span class="text-grey"><%= model.current_show %></span>
+              <% if model["current_show"] == 'public' %><span class="text-green"><%= model["current_show"] %></span>
+              <% elsif model["current_show"] == 'private' %><span class="text-red"><%= model["current_show"] %></span>
+              <% elsif model["current_show"] == 'away' || 'hidden' %><span class="text-grey"><%= model["current_show"] %></span>
               <% end %>
               <div class="cam-model__metainfo--item">
                 <img src="assets/clock.svg" alt="Seconds online:" />
-                <span class=""><%= formatted_duration(model.seconds_online) %></span>
+                <span class=""><%= formatted_duration(model["seconds_online"]) %></span>
               </div>
               <div class="cam-model__metainfo--item">
                 <img src="assets/profile.svg" alt="Viewers:" />
-                <span class=""><%= number_with_delimiter(model.num_users, :delimiter => ',') %></span>
+                <span class=""><%= number_with_delimiter(model["num_users"], :delimiter => ',') %></span>
               </div>
             </div>
             <hr>
             <div class="cam-model__subject">
-              <%= model.room_subject %>
+              <%= model["room_subject"] %>
             </div>
           </div>
         </div>
