@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tightfit</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109082730-1"></script>
+    <script type="text/javascript">
+      // Global site tag (gtag.js) - Google Analytics
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-109082730-1');
+    </script>
+  </head>
+  <body>
+    <div class="hide-for-small-only">
+      <div id="navWrapper">
+        <a href="/">
+          <i class="medium material-icons">personal_video</i>
+          <label>main</label>
+        </a>
+        <a href="/live">
+          <i class="medium material-icons">filter_center_focus</i>
+          <label>live cams</label>
+        </a>
+        <a href="#420" class="cd-top waves-effect.waves-orange">
+          <i class="medium material-icons">expand_less</i>
+          <label>top<label>
+        </a>
+        <!-- Exoclick direct link -->
+        <a href="https://syndication.exosrv.com/splash.php?idzone=2822640&return_url=" target="_blank">Check out our partners!</a>
+      </div>
+      <!-- Content begin -->
+      <div class="container">
+        <%= yield %>
+      </div>
+      <!-- Content end -->
+    </div>
+  </body>
+</html>

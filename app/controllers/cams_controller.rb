@@ -1,5 +1,4 @@
-class CamsController < ApplicationController
-
+class CamsController < ApplicationController  
   def index
     raw_model_list = get_models
     @model_list = Array.new()
@@ -26,7 +25,11 @@ class CamsController < ApplicationController
     @model_list = raw_model_list
     @model_list
   end
-
+  
+  def show
+    render 'show'
+  end
+  
   private
 
   def get_models
