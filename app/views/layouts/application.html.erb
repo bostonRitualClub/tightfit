@@ -27,7 +27,7 @@
         <div class="nav-wrapper">
           <img src="assets/tight_fit_logo.png" style="height: 100%;"/>
 
-          <form id="nav-search-input" class="search-models input-field" action="/cams" method="get">
+          <form id="nav-search-input" action="/cams" method="get" onsubmit="submitSearch()">
             <div class="input-field">
               <i class="material-icons prefix">search</i>
               <input id="input_text" name="search" type="text" value="<%= params[:search] %>" data-length="50">
