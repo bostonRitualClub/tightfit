@@ -22,6 +22,9 @@ Always deploy to staging first!
 You can deploy to staging with: `git push staging`
 You can deploy to production with `git push heroku`
 
+You can deploy specific branches with: `git push staging [branchNameHere]:master`
+You can deploy specific branches with: `git push heroku [branchNameHere]:master`
+
 After deploying you can run migrations with either:
 
 `heroku run rake db:migrate --remote staging` or `heroku run rake db:migrate --remote heroku`
