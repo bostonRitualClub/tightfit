@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'cams#index'
+  root 'cam_models#index'
 
-  resources :cams
+  get "/cam_model", to: 'cam_models#cam_model'
+
+  get "/cam_model/refresh", to: 'cam_models#cam_model_refresh'
+
+  resources :cam_models
 end
