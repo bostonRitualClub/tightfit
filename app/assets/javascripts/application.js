@@ -15,28 +15,18 @@
 //= require jquery_ujs
 //= require_tree .
 
+function submitSearch() {
+  event.preventDefault();
+  $.each ( $("#nav-search-input input, #index-search-input input").serializeArray(), function ( i, obj ) {
+    $('<input type="hidden">').prop( obj ).appendTo( $('#hidden-form') );
+  } );
+  var emptyInputFields = $('form input:hidden').filter(function() { return $(this).val() == ""; });
+  emptyInputFields.attr('disabled', true);
+  
+  $("#hidden-form").submit();
+}
+
 $(document).ready(function() {
   $('select').material_select();
 
-  var scroll_top_duration = 700;
-  var $back_to_top = $('.cd-top');
-
-  //smooth scroll to top
-  $back_to_top.on('click', function(event){
-		event.preventDefault();
-		$('body,html').animate({
-			scrollTop: 0 ,
-		 	}, scroll_top_duration
-		);
-	});
-
-  $("#search-submit").on("click", function(e) {
-    e.preventDefault();
-    var searchModelForm = $('#search-models');
-    var emptyInputFields = $('#search-models input:text').filter(function() { return $(this).val() == ""; });
-    emptyInputFields.attr('disabled', true);
-    searchModelForm.submit();
-  });
-
-  
 });

@@ -9269,7 +9269,7 @@ if (Vel) {
       return;
     }
 
-    $counterElement = $('<span/>').addClass('character-counter').css('float', 'right').css('font-size', '12px').css('height', 1);
+    $counterElement = $('<span/>').addClass('character-counter').css('float', 'right').css('height', 1);
 
     $input.parent().append($counterElement);
   }

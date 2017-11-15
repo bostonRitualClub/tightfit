@@ -4,10 +4,6 @@ html {
   color: white;
 }
 
-nav {
-  background-color: $brown-sugar;
-}
-
 #navWrapper{
   background: rgba(19,19,19,0.8);
   background: -moz-linear-gradient(left, rgba(19,19,19,0.8) 0%, rgba(19,19,19,0) 100%);
@@ -48,8 +44,4 @@ nav {
        padding: 0 20px;
     }
   }
-}
-
-#filterForm{
-  padding-top: 75px;
 }
