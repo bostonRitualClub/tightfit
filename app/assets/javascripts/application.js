@@ -29,16 +29,4 @@ function submitSearch() {
 $(document).ready(function() {
   $('select').material_select();
 
-  // This shit don't work!
-  // var scroll_top_duration = 700;
-  // var $back_to_top = $('.cd-top');
-  // 
-  // Smooth scroll to top
-  // $back_to_top.on('click', function(event){
-	// 	event.preventDefault();
-	// 	$('body,html').animate({
-	// 		scrollTop: 0 ,
-	// 	 	}, scroll_top_duration
-	// 	);
-	// });
 });
