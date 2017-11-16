@@ -2,6 +2,7 @@ class CamModelsController < ApplicationController
 
   def index
     @cam_model_list = CamModel.all
+    params.permit(:age, :chat_room_url_revshare, :image_url, :is_hd, :num_followers, :num_users, :room_subject, :username, :chat_room_url, :current_show, :gender, :iframe_embed_revshare, :iframe_embed, :is_new, :location, :seconds_online, :active)
 
     if params["gender"]
       included_genders = params["gender"].values
@@ -27,7 +28,9 @@ class CamModelsController < ApplicationController
   end
 
   def cam_model_refresh
+    redirect_to action: 'index'
     get_cam_models
+
   end
 
   private
@@ -96,9 +99,5 @@ class CamModelsController < ApplicationController
 
   def delete_inactive_cam_models
     CamModel.where(active: false).destroy_all
-  end
-
-  def cam_model_params
-    params.permit(:age, :chat_room_url_revshare, :image_url, :is_hd, :num_followers, :num_users, :room_subject, :username, :chat_room_url, :current_show, :gender, :iframe_embed_revshare, :iframe_embed, :is_new, :location, :seconds_online, :active)
   end
 end

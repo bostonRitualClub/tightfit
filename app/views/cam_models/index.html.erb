@@ -63,7 +63,11 @@
         <div class="cam-model-container col s6 m4 l5ths">
           <div class="cam-model">
             <div class="cam-model__details">
-              <span class="cam-model__details--username"><%= model["username"] %></span>
+              <span class="cam-model__details--username">
+                <%= link_to(model['chat_room_url_revshare']) do %>
+                <strong><%= model["username"] %></strong>
+                <% end %>
+              </span>
               <span class="cam-model__details--age"><%= model["age"] %></span>
             </div>
             <div class="cam-model__image">
@@ -94,30 +98,3 @@
     <% end %>
   </div>
 <% end %>
-
-<!-- fluidPlayer dependencies -->
-<link rel="stylesheet" href="https://cdn.fluidplayer.com/current/fluidplayer.min.css" type="text/css"/>
-<script src="https://cdn.fluidplayer.com/current/fluidplayer.min.js"></script>
-<!-- Activate fluidplayer -->
-<video id='exoclickVideo1' controls style="width: 640px; height: 360px;">
-  <source src='exoclick_advideo1.mp4' type='video/mp4' />
-</video>
-
-<!-- Exoclick videoOverlay ad-->
-<script type="text/javascript" src="https://ads.exosrv.com/invideo.js"></script>
-<script type="text/javascript">
-  var exoOpts = {
-    cat: '2',
-    login: 'tightfitcams',
-    idzone_300x250: '2822642',
-    idsite: '698832',
-    preroll: {},
-    pause: {},
-    postroll: {},
-    show_thumb: '1'
-  }
-  var testVideo = fluidPlayer('exoclickVideo1');
-</script>
-
-<!-- Crakrevenue -->
-<script>var url=encodeURIComponent("https://t.frtyt.com/jbbwnnfmkg?offer_id=4093&aff_id=58348&bo=2745,2746,2748,2749,2750&file_id=243318");document.write('<iframe style="border: 0; width: 300px; height: 250px; overflow: hidden;" scrolling="no" src="//s2.static.cfgr1.com/anim/index12.html?id=assets/004578A/EOOxZSO&width=300&height=250&fallback=jpg&out=png&over=off&url={url}"></iframe>'.replace('{url}', url));</script><img src="https://t.frtyt.com/4c04f6f2iq?offer_id=4093&aff_id=58348&bo=2745,2746,2748,2749,2750&file_id=243318" width="1" height="1" />
