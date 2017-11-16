@@ -18,6 +18,7 @@ gem 'httmultiparty', '~> 0.3.16'
 gem 'kaminari'
 
 group :development, :test do
+  gem 'binding_of_caller'
   gem 'better_errors'
   gem 'capybara', '~> 2.13.0'
   gem 'pry', platforms: [:mri, :mingw, :x64_mingw]

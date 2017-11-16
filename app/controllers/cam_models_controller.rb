@@ -6,7 +6,7 @@ class CamModelsController < ApplicationController
 
     if params["gender"]
       included_genders = params["gender"].values
-      @cam_model_list = @cam_models_list.where(gender: included_genders)
+      @cam_model_list = @cam_model_list.where(gender: included_genders)
     else
       @cam_model_list = @cam_model_list.where("gender = ?", "f")
     end
