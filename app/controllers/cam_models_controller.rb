@@ -12,7 +12,7 @@ class CamModelsController < ApplicationController
     end
 
     params.keys.each do |param|
-      @cam_model_list = @cam_model_list.where("username LIKE ?", "%#{params["search"]}%") unless params['search'].blank?
+      @cam_model_list = @cam_model_list.where("username LIKE ? OR room_subject LIKE ?", "%#{params["search"]}%", "%#{params["search"]}%") unless params['search'].blank?
       @cam_model_list = @cam_model_list.where("age >= ?", params["age_start"]) unless params['age_start'].blank?
       @cam_model_list = @cam_model_list.where("age <= ?", params["age_end"]) unless params['age_end'].blank?
       @cam_model_list = @cam_model_list.where("num_users >= ?", params["view_start"]) unless params['view_start'].blank?
@@ -28,9 +28,7 @@ class CamModelsController < ApplicationController
   end
 
   def cam_model_refresh
-    redirect_to action: 'index'
     get_cam_models
-
   end
 
   private
