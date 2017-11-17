@@ -1,15 +1,6 @@
 <!-- Chaterbates top chat room iframe: (we get $1 per sign up from this) -->
 <!-- <iframe src='https:\/\/chaturbate.com\/affiliates\/in\/?tour=NxHf&campaign=9RAIT&track=embed&bgcolor=transparent&disable_sound=1&embed_video_only=0&target=_parent' height=523 width=850 style='border: none;'></iframe> -->
-
-<form id="search-models" action="/cams" method="get">
-  <div class="row">
-    <div class="input-field">
-      <i class="material-icons prefix">search</i>
-      <input id="input_text" name="search" type="text" value="<%= params[:search] %>" data-length="50">
-      <label for="input_text">Search...</label>
-    </div>
-  </div>
-
+<form id="index-search-input" action="/cams" method="get" onsubmit="submitSearch()">
   <div class="row">
     <div class="col s3 m3 l3" style="padding-left: 45px;">
       <div class="input-field">
@@ -28,12 +19,12 @@
 
     <div class="col s3 m3 l3">
       <div>
-        <input id="search-female" name="gender" type="checkbox" class="filled-in" value="f"
+        <input id="search-female" name="gender[female]" type="checkbox" class="filled-in" value="f"
               <%= 'checked' if params.dig(:gender, :female) %>/>
         <label for="search-female">Female</label>
       </div>
       <div>
-        <input id="search-male" name="gender" type="checkbox" class="filled-in" value="m"
+        <input id="search-male" name="gender[male]" type="checkbox" class="filled-in" value="m"
               <%= 'checked' if params.dig(:gender, :male) %>/>
         <label for="search-male">Male</label>
       </div>
@@ -56,11 +47,14 @@
   </div>
 
   <div class="row text-right">
-    <button id="search-submit" class="btn waves-effect waves-light">Submit
+    <button class="btn waves-effect waves-light">Submit
       <i class="material-icons right">send</i>
     </button>
   </div>
-<form>
+</form>
+
+<form id="hidden-form" action="/cams" method="get">
+</form>
 
 <% @cam_model_list.in_groups_of(5).each do |group| %>
   <div class="row">
@@ -70,8 +64,8 @@
           <div class="cam-model">
             <div class="cam-model__details">
               <span class="cam-model__details--username">
-                <%= link_to(model['chat_room_url_revshare']) do %>
-                <strong><%= model["username"] %></strong>
+                <%= link_to model['chat_room_url_revshare'] do %>
+                  <%= model["username"].truncate(12) %>
                 <% end %>
               </span>
               <span class="cam-model__details--age"><%= model["age"] %></span>
@@ -104,3 +98,30 @@
     <% end %>
   </div>
 <% end %>
+
+<!-- fluidPlayer dependencies -->
+<link rel="stylesheet" href="https://cdn.fluidplayer.com/current/fluidplayer.min.css" type="text/css"/>
+<script src="https://cdn.fluidplayer.com/current/fluidplayer.min.js"></script>
+<!-- Activate fluidplayer -->
+<video id='exoclickVideo1' controls style="width: 640px; height: 360px;">
+  <source src='exoclick_advideo1.mp4' type='video/mp4' />
+</video>
+
+<!-- Exoclick videoOverlay ad-->
+<script type="text/javascript" src="https://ads.exosrv.com/invideo.js"></script>
+<script type="text/javascript">
+  var exoOpts = {
+    cat: '2',
+    login: 'tightfitcams',
+    idzone_300x250: '2822642',
+    idsite: '698832',
+    preroll: {},
+    pause: {},
+    postroll: {},
+    show_thumb: '1'
+  }
+  var testVideo = fluidPlayer('exoclickVideo1');
+</script>
+
+<!-- Crakrevenue -->
+<script>var url=encodeURIComponent("https://t.frtyt.com/jbbwnnfmkg?offer_id=4093&aff_id=58348&bo=2745,2746,2748,2749,2750&file_id=243318");document.write('<iframe style="border: 0; width: 300px; height: 250px; overflow: hidden;" scrolling="no" src="//s2.static.cfgr1.com/anim/index12.html?id=assets/004578A/EOOxZSO&width=300&height=250&fallback=jpg&out=png&over=off&url={url}"></iframe>'.replace('{url}', url));</script><img src="https://t.frtyt.com/4c04f6f2iq?offer_id=4093&aff_id=58348&bo=2745,2746,2748,2749,2750&file_id=243318" width="1" height="1" />

@@ -12,12 +12,12 @@ class CamModelsController < ApplicationController
     end
 
     params.keys.each do |param|
-      @cam_model_list = @cam_model_list.where("username LIKE ?", "%#{params["search"]}%") if param == "search"
-      @cam_model_list = @cam_model_list.where("age >= ?", params["age_start"]) if param == "age_start"
-      @cam_model_list = @cam_model_list.where("age <= ?", params["age_end"]) if param == "age_end"
-      @cam_model_list = @cam_model_list.where("num_users >= ?", params["view_start"]) if param == "view_start"
-      @cam_model_list = @cam_model_list.where("num_users <= ?", params["view_end"]) if param == "view_end"
-      @cam_model_list = @cam_model_list.where("is_hd = ?", params["is_hd"]) if param == "is_hd"
+      @cam_model_list = @cam_model_list.where("username LIKE ?", "%#{params["search"]}%") unless params['search'].blank?
+      @cam_model_list = @cam_model_list.where("age >= ?", params["age_start"]) unless params['age_start'].blank?
+      @cam_model_list = @cam_model_list.where("age <= ?", params["age_end"]) unless params['age_end'].blank?
+      @cam_model_list = @cam_model_list.where("num_users >= ?", params["view_start"]) unless params['view_start'].blank?
+      @cam_model_list = @cam_model_list.where("num_users <= ?", params["view_end"]) unless params['view_end'].blank?
+      @cam_model_list = @cam_model_list.where("is_hd = ?", params["is_hd"]) unless params['is_hd'].blank?
     end
 
     @cam_model_list
