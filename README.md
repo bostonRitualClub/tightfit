@@ -28,3 +28,7 @@ You can deploy specific branches with: `git push heroku [branchNameHere]:master`
 After deploying you can run migrations with either:
 
 `heroku run rake db:migrate --remote staging` or `heroku run rake db:migrate --remote heroku`
+
+#### Heroku Info
+Scheduler for staging: scheduler-convex-47953 
+Scheduler for production: scheduler-globular-24494 
