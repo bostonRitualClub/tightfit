@@ -52,7 +52,7 @@
     </button>
   </div>
 </form>
-  
+
 <form id="hidden-form" action="/cams" method="get">
 </form>
 
@@ -63,7 +63,11 @@
         <div class="cam-model-container col s6 m4 l5ths">
           <div class="cam-model">
             <div class="cam-model__details">
-              <span class="cam-model__details--username"><%= model["username"] %></span>
+              <span class="cam-model__details--username">
+                <%= link_to model['chat_room_url_revshare'] do %>
+                  <%= model["username"].truncate(12) %>
+                <% end %>
+              </span>
               <span class="cam-model__details--age"><%= model["age"] %></span>
             </div>
             <div class="cam-model__image">

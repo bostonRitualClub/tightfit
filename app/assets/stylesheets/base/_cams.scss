@@ -7,16 +7,18 @@
     display: flex;
     justify-content: space-between;
 
-    .cam-model__details--username { font-weight: bold; }
+    .cam-model__details--username {
+      font-weight: bold;
+     }
     .cam-model__details--age { color: $placeholder-grey; }
   }
-  
+
   .cam-model__image {
     display:inline-block;
     position:relative;
     // Need a different way to deal with smaller chauterbate image
     // min-height: 190px;
-    
+
     .hd-icon {
       bottom:10px;
       height:2em;
@@ -24,7 +26,7 @@
       right:5px;
     }
   }
-  
+
   .cam-model__metainfo {
     display: flex;
     justify-content: space-between;
@@ -33,21 +35,22 @@
       align-items: center;
       color: $placeholder-grey;
       display: flex;
-      
-      img { 
+
+      img {
         height: 1em;
         padding-right: 0.25em;
       }
     }
   }
-  
+
   .cam-model__subject {
     height: 6em;
     overflow: hidden;
   }
-  
+
   img { border-radius: 5px; }
 }
+
 
 #age_start,
 #age_end,

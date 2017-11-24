@@ -2,21 +2,22 @@ class CamModelsController < ApplicationController
 
   def index
     @cam_model_list = CamModel.all
+    params.permit(:age, :chat_room_url_revshare, :image_url, :is_hd, :num_followers, :num_users, :room_subject, :username, :chat_room_url, :current_show, :gender, :iframe_embed_revshare, :iframe_embed, :is_new, :location, :seconds_online, :active)
 
     if params["gender"]
       included_genders = params["gender"].values
-      @cam_model_list = @cam_models_list.where(gender: included_genders)
+      @cam_model_list = @cam_model_list.where(gender: included_genders)
     else
       @cam_model_list = @cam_model_list.where("gender = ?", "f")
     end
 
     params.keys.each do |param|
-      @cam_model_list = @cam_model_list.where("username LIKE ?", "%#{params["search"]}%") if param == "search"
-      @cam_model_list = @cam_model_list.where("age >= ?", params["age_start"]) if param == "age_start"
-      @cam_model_list = @cam_model_list.where("age <= ?", params["age_end"]) if param == "age_end"
-      @cam_model_list = @cam_model_list.where("num_users >= ?", params["view_start"]) if param == "view_start"
-      @cam_model_list = @cam_model_list.where("num_users <= ?", params["view_end"]) if param == "view_end"
-      @cam_model_list = @cam_model_list.where("is_hd = ?", params["is_hd"]) if param == "is_hd"
+      @cam_model_list = @cam_model_list.where("username LIKE ? OR room_subject LIKE ?", "%#{params["search"]}%", "%#{params["search"]}%") unless params['search'].blank?
+      @cam_model_list = @cam_model_list.where("age >= ?", params["age_start"]) unless params['age_start'].blank?
+      @cam_model_list = @cam_model_list.where("age <= ?", params["age_end"]) unless params['age_end'].blank?
+      @cam_model_list = @cam_model_list.where("num_users >= ?", params["view_start"]) unless params['view_start'].blank?
+      @cam_model_list = @cam_model_list.where("num_users <= ?", params["view_end"]) unless params['view_end'].blank?
+      @cam_model_list = @cam_model_list.where("is_hd = ?", params["is_hd"]) unless params['is_hd'].blank?
     end
 
     @cam_model_list
@@ -96,9 +97,5 @@ class CamModelsController < ApplicationController
 
   def delete_inactive_cam_models
     CamModel.where(active: false).destroy_all
-  end
-
-  def cam_model_params
-    params.permit(:age, :chat_room_url_revshare, :image_url, :is_hd, :num_followers, :num_users, :room_subject, :username, :chat_room_url, :current_show, :gender, :iframe_embed_revshare, :iframe_embed, :is_new, :location, :seconds_online, :active)
   end
 end
