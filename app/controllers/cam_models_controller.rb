@@ -29,6 +29,7 @@ class CamModelsController < ApplicationController
 
   def cam_model_refresh
     get_cam_models
+    redirect_to action: "index"
   end
 
   private
