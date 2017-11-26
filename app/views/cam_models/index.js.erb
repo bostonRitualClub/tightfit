@@ -1,0 +1,7 @@
+$('#cam-model-list').append('<div class="cam-model__group"><%= j render @cam_models %></div>');
+<% if @cam_models.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @cam_models %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

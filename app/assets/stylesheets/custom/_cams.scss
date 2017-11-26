@@ -2,18 +2,26 @@
 
 .cam-model__group{
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-between;
-
-  @media screen and (max-width:599px), screen and (max-height: 420px){
-  flex-flow: column nowrap;
-}
 
   .cam-model__container{
     padding: 1em;
     position: relative;
-    width: 100%;
     height: auto;
+
+    @media screen and (min-width: 2px) and (max-width: 599px){
+      width: 100%;
+    }
+
+
+    @media screen and (min-width: 600px) and (max-width: 1225px){
+      width: 33%;
+    }
+
+    @media screen and (min-width: 1226px){
+      width: 25%;
+    }
 
     .hd-icon {
       top: 0;
@@ -38,7 +46,7 @@
     }
 
     .cam-model__details{
-      transition: .5s ease;
+      transition: .2s ease;
       opacity: 0;
       position: absolute;
       background-color: rgba(16,15,6,0.45);;
@@ -75,6 +83,15 @@
         text-shadow: 1px 1px 2px black;
       }
     }
+  }
+}
+
+.ad-videos{
+  display: flex;
+  flex-direction: row nowrap;
+
+  div{
+    width: 25%;
   }
 }
 

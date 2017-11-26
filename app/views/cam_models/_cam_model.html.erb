@@ -1,0 +1,34 @@
+<div class="cam-model__container">
+  <img class="responsive-img" src="<%= cam_model["image_url"] %>" />
+  <% if cam_model["is_hd"] %>
+    <img class="hd-icon" src="assets/hd.svg" alt="HD stream" />
+  <% end %>
+  <span class="cam-model__details--username">
+    <%= link_to cam_model['chat_room_url_revshare'] do %>
+      <%= cam_model["username"].truncate(12) %>
+    <% end %>
+  </span>
+  <% if cam_model["current_show"] == 'public' %><span class="text-green cam-model__details--current-show"><%= cam_model["current_show"] %></span>
+  <% elsif cam_model["current_show"] == 'private' %><span class="text-red cam-model__details--current-show"><%= cam_model["current_show"] %></span>
+  <% elsif cam_model["current_show"] == 'away' || 'hidden' %><span class="text-grey cam-model__details--current-show"><%= cam_model["current_show"] %></span>
+  <% end %>
+  <%= link_to cam_model['chat_room_url_revshare'] do %>
+    <div class="cam-model__details">
+      <div class="cam-model__metainfo">
+        <span class="cam-model__details--age">age: <%= cam_model["age"] %></span>
+        <div class="cam-model__details--online">
+          <img src="assets/clock.svg" alt="Seconds online:" />
+          <span class=""><%= formatted_duration(cam_model["seconds_online"]) %></span>
+        </div>
+        <div class="cam-model__metainfo--item">
+          <img src="assets/profile.svg" alt="Viewers:" />
+          <span class=""><%= number_with_delimiter(cam_model["num_users"], :delimiter => ',') %></span>
+        </div>
+      </div>
+      <hr width="70%">
+      <div class="cam-model__subject">
+        <%= cam_model["room_subject"] %>
+      </div>
+    </div>
+  <% end %>
+</div>

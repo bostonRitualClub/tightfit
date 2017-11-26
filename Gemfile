@@ -16,6 +16,7 @@ gem 'foundation-rails', '5.4.3.1'
 gem 'rails_12factor', group: :production
 gem 'httmultiparty', '~> 0.3.16'
 gem 'kaminari'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'better_errors'
