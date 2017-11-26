@@ -6,7 +6,6 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    max-width: 1400px;
 
     #tightfit{
       padding: 0 3%;
@@ -22,27 +21,31 @@
     }
 
     .searchbar {
-      flex-grow: 1;
-      margin: 0 auto;
+      flex: 1;
 
       #search-icon {
         top: 15%;
         font-size: 2.5rem;
       }
 
+      .input-field{
+        max-width: 800px;
+      }
+
       @include medium{
-        margin-right: 7%;
+        margin-right: 8%;
       }
     }
 
     .explore-button{
-      padding: 0 2%;
-      margin-left: 5%;
+      padding: 0 1%;
+      margin-left: 8%;
 
       span{
         color: white;
         position: relative;
         float: left;
+        font-weight: bold;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -69,56 +72,61 @@
   }
 }
 
-.character-counter {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-
 #index-search-input {
   padding-top: 2%;
-}
+  padding-bottom: 1%;
+  padding-right: calc(5% + 1em);
 
-.filters {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  margin: 0 auto;
-  max-width: 1200px;
-
-  .filters__age {
+  .filters {
     display: flex;
-  }
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1000px;
 
-  .filters__viewers {
-    display: flex;
-  }
 
-  .filters__gender {
-    display: flex;
-    flex-direction: column;
-  }
+    .filters__age {
+      display: flex;
+      @include small {
+        margin: 0 5%;
+      }
+    }
 
-  .filters__ishd {
-    display: flex;
-  }
+    .filters__viewers {
+      display: flex;
+      @include small {
+        margin: 0 5%;
+      }
+    }
 
-  @include small {
-    flex-direction: column;
-  }
+    .filters__gender {
+      display: flex;
+      flex-direction: column;
+      @include small {
+        margin: 0 5%;
+      }
+    }
 
+    .filters__ishd {
+      display: flex;
+      @include small {
+        margin: 0 5%;
+      }
+    }
+  }
 }
 
 .submit-button {
   display: flex;
   justify-content: flex-end;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 950px;
+}
 
-  .btn{
-    margin-right: 2%;
-  }
+.character-counter {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 #age_start,
