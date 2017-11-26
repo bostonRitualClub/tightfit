@@ -7,9 +7,14 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    align-items: center;
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 1200px;
+    padding-left: 5%;
 
+    @include small{
+      justify-content: center;
+    }
 
     .filters__age {
       display: flex;
@@ -27,26 +32,39 @@
 
     .filters__gender {
       display: flex;
-      flex-direction: column;
+
+      @media (max-width: 1000px) {
+        flex-flow: column nowrap;
+      }
+
       @include small {
-        margin: 0 7%;
+        margin: 0 15%;
+      }
+      div {
+        margin-right: 5%;
+
+        label {
+          padding-left: 25px;
+        }
       }
     }
 
     .filters__ishd {
-      display: flex;
       @include small {
-        margin: 0 5%;
+        margin: 0 15%;
+      }
+
+      label {
+        padding-left: 25px;
+      }
+    }
+
+    .submit-button {
+      @include small{
+        margin-top: 5%;
       }
     }
   }
-}
-
-.submit-button {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 auto;
-  max-width: 950px;
 }
 
 .character-counter {

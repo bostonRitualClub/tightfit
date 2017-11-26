@@ -3,6 +3,6 @@ task refresh_cam_models: :environment do
   puts "updating cams..."
   include Rails.application.routes.url_helpers
   app = ActionDispatch::Integration::Session.new(Rails.application)
-  app.get "/cam_model/refresh"
+  app.get "/cam_models/refresh"
   puts "...updated."
 end

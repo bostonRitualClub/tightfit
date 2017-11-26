@@ -27,6 +27,11 @@ class CamModelsController < ApplicationController
     end
   end
 
+  def show
+    @cam_model = CamModel.find(params[:id])
+    @cam_models = CamModel.where(gender: 'f').sample(20)
+  end
+
   def cam_model
     render "show"
   end
@@ -39,7 +44,6 @@ class CamModelsController < ApplicationController
   private
 
   def get_cam_models
-
     unless CamModel.maximum(:id).nil?
       if CamModel.maximum(:id) > 1000000
         purge_that_shit

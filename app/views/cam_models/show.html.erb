@@ -1,4 +1,17 @@
-WE EXIST.
-
-<!-- model.iframe_embed is something this: -->
-<iframe src='https://chaturbate.com/affiliates/in/?tour=Jrvi&amp;campaign=9RAIT&amp;track=embed&amp;room=newchloe18&amp;bgcolor=white' height=528 width=850 style='border: none;'></iframe>
+<div class="cam-model__show">
+  <div class="cam-model__visible-info">
+    <span class="cam-model__details--username">
+      <%= link_to @cam_model['chat_room_url_revshare'] do %>
+        <%= @cam_model["username"] %>
+      <% end %>
+    </span>
+    <% if @cam_model["current_show"] == 'public' %><span class="text-green cam-model__details--current-show"><%= @cam_model["current_show"] %></span>
+    <% elsif @cam_model["current_show"] == 'private' %><span class="text-red cam-model__details--current-show"><%= @cam_model["current_show"] %></span>
+    <% elsif @cam_model["current_show"] == 'away' || 'hidden' %><span class="text-grey cam-model__details--current-show"><%= @cam_model["current_show"] %></span>
+    <% end %>
+  </div>
+  <%= raw @cam_model['iframe_embed_revshare'] %>
+  <div class="cam-model__group">
+    <%= render @cam_models %>
+  </div>
+</div>
