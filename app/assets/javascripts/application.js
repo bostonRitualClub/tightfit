@@ -39,7 +39,7 @@ $(document).ready(function() {
       var more_cam_models_url = $('.pagination .next_page').attr('href');
       if (more_cam_models_url && $(window).scrollTop() > $(document).height() - $(window).height() - 500) {
         $('#infinite-scrolling .pagination').html(
-          '<div class="infinite-loader"><img class="loader-icon" src="/assets/loader.gif" alt="loading" title="loading" /><h6>  ...probing more models</h6></div>'
+          '<div class="infinite-loader"><img class="loader-icon" src="/assets/loader.gif" alt="loading" title="loading" /><h6>  ...probing for more models</h6></div>'
         );
         setTimeout(function(){
           $.getScript(more_cam_models_url);
