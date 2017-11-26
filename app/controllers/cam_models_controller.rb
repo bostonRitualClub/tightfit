@@ -39,7 +39,13 @@ class CamModelsController < ApplicationController
   private
 
   def get_cam_models
-    # TODO: allow get_cam_models to take in a page parameter for infinite scroll
+
+    unless CamModel.maximum(:id).nil?
+      if CamModel.maximum(:id) > 1000000
+        purge_that_shit
+      end
+    end
+
     response = ExternalApiRequest.new(base_uri: 'https://chaturbate.com/affiliates/api/onlinerooms/?format=json&wm=9RAIT', http_method: 'get')
 
     CamModel.update_all(active: false)
@@ -102,5 +108,10 @@ class CamModelsController < ApplicationController
 
   def delete_inactive_cam_models
     CamModel.where(active: false).destroy_all
+  end
+
+  def purge_that_shit
+    CamModel.destroy_all
+    ActiveRecord::Base.connection.execute("ALTER SEQUENCE cam_models_id_seq RESTART WITH 1")
   end
 end

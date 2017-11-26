@@ -32,14 +32,14 @@ $(document).ready(function() {
   $(window).bindWithDelay('scroll', function(){
     if ($('#infinite-scrolling').size() > 0) {
       var more_cam_models_url = $('.pagination .next_page').attr('href');
-      if (more_cam_models_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
+      if (more_cam_models_url && $(window).scrollTop() > $(document).height() - $(window).height() - 500) {
         $('#infinite-scrolling .pagination').html(
-          '<img src="/assets/loader.gif" alt="Loading..." title="Pulling up more models..." />'
+          '<div class="infinite-loader"><img class="loader-icon" src="/assets/loader.gif" alt="loading" title="loading" /><h6>  ...grabbing more models</h6></div>'
         );
         setTimeout(function(){
           $.getScript(more_cam_models_url);
-        }, 2500);
+        }, 1500);
       }
     }
-  }, 200);
+  }, 100);
 });

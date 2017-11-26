@@ -88,12 +88,38 @@
 
 .ad-videos{
   display: flex;
-  flex-direction: row nowrap;
+  flex-direction: row wrap;
+  margin-top: 5%;
+  padding-top: 5%;
+  border-top: solid $brown-sugar;
 
   div{
     width: 25%;
   }
 }
+
+#infinite-scrolling{
+  .pagination{
+    a, em, span{
+      opacity: 0;
+    }
+  }
+
+  .infinite-loader{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    .loader-icon{
+      height: 2rem;
+    }
+    h6{
+      font-family: 'Armata', sans-serif;
+      font-size: 0.8rem;
+    }
+  }
+}
+
 
 #age_start,
 #age_end,
