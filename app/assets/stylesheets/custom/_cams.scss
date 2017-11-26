@@ -34,14 +34,6 @@
       width: 20%;
     }
 
-    .hd-icon {
-      top: 0;
-      right: 0;
-      height: 2em;
-      position: absolute;
-      z-index: 2;
-    }
-
     .cam-model__visible-info{
       display: flex;
       justify-content: space-between;
@@ -59,6 +51,14 @@
       .cam-model__details--current-show{
         float: right;
       }
+    }
+
+    .hd-icon {
+      top: 0;
+      right: 0;
+      height: 2em;
+      position: absolute;
+      z-index: 2;
     }
 
     .cam-model__details{
@@ -120,6 +120,37 @@
     h6{
       font-family: 'Armata', sans-serif;
       font-size: 0.8rem;
+    }
+  }
+}
+
+
+.cam-model__show {
+  width: 70%;
+  margin: 0 auto;
+
+  iframe {
+    width: 100%;
+  }
+
+  .cam-model__group {
+    margin-top: 10%;
+  }
+
+  .cam-model__visible-info {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+
+    .cam-model__details--username {
+      float: left;
+
+      a {
+        font-family: 'Armata', sans-serif;
+        opacity: 1;
+        color: white;
+      }
     }
   }
 }
