@@ -17,7 +17,7 @@
   justify-content: space-between;
 
   .cam-model__container{
-    padding: 1em;
+    padding: 2em;
     position: relative;
     height: auto;
 
@@ -31,7 +31,7 @@
     }
 
     @include large{
-      width: 25%;
+      width: 20%;
     }
 
     .hd-icon {
