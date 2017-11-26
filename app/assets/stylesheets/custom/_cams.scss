@@ -1,61 +1,125 @@
-.cam-model {
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  padding: 0.5em;
+@import url('https://fonts.googleapis.com/css?family=Armata');
 
-  .cam-model__details {
-    display: flex;
-    justify-content: space-between;
+.cam-model__content-main{
+  display: flex;
+  flex-direction: column;
+  max-width: 1600px;
+  margin-left: 5%;
+}
 
-    .cam-model__details--username { font-weight: bold; }
-    .cam-model__details--age { color: $placeholder-grey; }
-  }
-  
-  .cam-model__image {
-    display:inline-block;
-    position:relative;
-    // Need a different way to deal with smaller chauterbate image
-    // min-height: 190px;
-    
-    .hd-icon {
-      bottom:10px;
-      height:2em;
-      position:absolute;
-      right:5px;
+.cam-model__content{
+  display: flex;
+}
+
+.cam-model__group{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  .cam-model__container{
+    padding: 1em;
+    position: relative;
+    height: auto;
+
+    @include small {
+      width: 80%;
+      margin: 0 auto;
     }
-  }
-  
-  .cam-model__metainfo {
-    display: flex;
-    justify-content: space-between;
 
-    .cam-model__metainfo--item {
-      align-items: center;
-      color: $placeholder-grey;
+    @include medium{
+      width: 33%;
+    }
+
+    @include large{
+      width: 25%;
+    }
+
+    .hd-icon {
+      top: 0;
+      right: 0;
+      height: 2em;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .cam-model__visible-info{
       display: flex;
-      
-      img { 
-        height: 1em;
-        padding-right: 0.25em;
+      justify-content: space-between;
+      position: relative;
+      .cam-model__details--username{
+        float: left;
+
+        a{
+          font-family: 'Armata', sans-serif;
+          opacity: 1;
+          color: white;
+        }
+      }
+
+      .cam-model__details--current-show{
+        float: right;
+      }
+    }
+
+    .cam-model__details{
+      transition: .2s ease;
+      opacity: 0;
+      position: absolute;
+      background-color: rgba(16,15,6,0.45);;
+      z-index: 9;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding-top: 10%;
+      color: white;
+
+      &:hover{
+        opacity: 1;
+      }
+
+      .cam-model__metainfo{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+
+        span{
+          font-family: 'Armata', sans-serif;
+        }
+
+        img{
+          height: 1em;
+        }
+      }
+
+      .cam-model__subject{
+        width: 80%;
+        margin: 0 auto;
+        text-shadow: 1px 1px 2px black;
       }
     }
   }
-  
-  .cam-model__subject {
-    height: 6em;
-    overflow: hidden;
+}
+
+#infinite-scrolling{
+  .pagination{
+    a, em, span{
+      opacity: 0;
+    }
   }
-  
-  img { border-radius: 5px; }
-}
 
-#age_start,
-#age_end,
-#view_start,
-#view_end {
-  width: 5em !important;
-}
+  .infinite-loader{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 
-#index-search-input {
-  padding-top: 2em;
+    .loader-icon{
+      height: 2rem;
+    }
+    h6{
+      font-family: 'Armata', sans-serif;
+      font-size: 0.8rem;
+    }
+  }
 }

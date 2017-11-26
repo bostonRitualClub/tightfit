@@ -1,0 +1,18 @@
+<div class="nav">
+  <div class="navbar">
+    <a id="tightfit" href="/"><img src="assets/tight_fit_logo.png"/></a>
+    <div class="searchbar">
+      <form id="nav-search-input" action="/cams" method="get" onsubmit="submitSearch()">
+        <div class="input-field">
+          <i id="search-icon" class="material-icons prefix">search</i>
+          <input id="input_text" name="search" type="text" value="<%= params[:search] %>" data-length="50">
+          <label for="input_text">Search...</label>
+        </div>
+      </form>
+    </div>
+    <!-- Exoclick direct link -->
+    <a class="explore-button" href="https://syndication.exosrv.com/splash.php?idzone=2822640&return_url=" target="_blank">
+      <span>EXPLORE</span>
+    </a>
+  </div>
+</div>

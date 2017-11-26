@@ -9,10 +9,11 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
+//= require advertisements
 //= require_tree .
 
 function submitSearch() {
@@ -22,11 +23,28 @@ function submitSearch() {
   } );
   var emptyInputFields = $('form input:hidden').filter(function() { return $(this).val() == ""; });
   emptyInputFields.attr('disabled', true);
-  
+
   $("#hidden-form").submit();
+}
+
+function getRandomArbitrary(min, max) {
+  var round = Math.round;
+  return round(Math.random() * (max - min) + min);
 }
 
 $(document).ready(function() {
   $('select').material_select();
-
+  $(window).bindWithDelay('scroll', function(){
+    if ($('#infinite-scrolling').size() > 0) {
+      var more_cam_models_url = $('.pagination .next_page').attr('href');
+      if (more_cam_models_url && $(window).scrollTop() > $(document).height() - $(window).height() - 500) {
+        $('#infinite-scrolling .pagination').html(
+          '<div class="infinite-loader"><img class="loader-icon" src="/assets/loader.gif" alt="loading" title="loading" /><h6>  ...probing for more models</h6></div>'
+        );
+        setTimeout(function(){
+          $.getScript(more_cam_models_url);
+        }, getRandomArbitrary(1200, 2500));
+      }
+    }
+  }, 100);
 });

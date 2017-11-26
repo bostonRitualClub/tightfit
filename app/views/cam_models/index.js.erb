@@ -1,0 +1,7 @@
+$('#cam-model-list').append('<div class="cam-model__group"><%= j render @cam_models %></div>');
+<% if @cam_models.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @cam_models %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').html('<div class="infinite-loader"><img class="loader-icon" src="/assets/loader.gif" alt="loading" title="loading" /><h6>  No more models to show!</h6></div>');
+<% end %>

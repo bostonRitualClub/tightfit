@@ -1,26 +1,30 @@
 class CamModelsController < ApplicationController
 
   def index
-    @cam_model_list = CamModel.all
+    cam_model_list = CamModel.all
     params.permit(:age, :chat_room_url_revshare, :image_url, :is_hd, :num_followers, :num_users, :room_subject, :username, :chat_room_url, :current_show, :gender, :iframe_embed_revshare, :iframe_embed, :is_new, :location, :seconds_online, :active)
 
     if params["gender"]
       included_genders = params["gender"].values
-      @cam_model_list = @cam_model_list.where(gender: included_genders)
+      cam_model_list = cam_model_list.where(gender: included_genders)
     else
-      @cam_model_list = @cam_model_list.where("gender = ?", "f")
+      cam_model_list = cam_model_list.where("gender = ?", "f")
     end
 
     params.keys.each do |param|
-      @cam_model_list = @cam_model_list.where("username LIKE ? OR room_subject LIKE ?", "%#{params["search"]}%", "%#{params["search"]}%") unless params['search'].blank?
-      @cam_model_list = @cam_model_list.where("age >= ?", params["age_start"]) unless params['age_start'].blank?
-      @cam_model_list = @cam_model_list.where("age <= ?", params["age_end"]) unless params['age_end'].blank?
-      @cam_model_list = @cam_model_list.where("num_users >= ?", params["view_start"]) unless params['view_start'].blank?
-      @cam_model_list = @cam_model_list.where("num_users <= ?", params["view_end"]) unless params['view_end'].blank?
-      @cam_model_list = @cam_model_list.where("is_hd = ?", params["is_hd"]) unless params['is_hd'].blank?
+      cam_model_list = cam_model_list.where("username LIKE ? OR room_subject LIKE ?", "%#{params["search"]}%", "%#{params["search"]}%") unless params['search'].blank?
+      cam_model_list = cam_model_list.where("age >= ?", params["age_start"]) unless params['age_start'].blank?
+      cam_model_list = cam_model_list.where("age <= ?", params["age_end"]) unless params['age_end'].blank?
+      cam_model_list = cam_model_list.where("num_users >= ?", params["view_start"]) unless params['view_start'].blank?
+      cam_model_list = cam_model_list.where("num_users <= ?", params["view_end"]) unless params['view_end'].blank?
+      cam_model_list = cam_model_list.where("is_hd = ?", params["is_hd"]) unless params['is_hd'].blank?
     end
 
-    @cam_model_list
+    @cam_models = cam_model_list.paginate(page: params[:page], per_page: 100)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def cam_model
@@ -29,12 +33,19 @@ class CamModelsController < ApplicationController
 
   def cam_model_refresh
     get_cam_models
+    redirect_to action: "index"
   end
 
   private
 
   def get_cam_models
-    # TODO: allow get_cam_models to take in a page parameter for infinite scroll
+
+    unless CamModel.maximum(:id).nil?
+      if CamModel.maximum(:id) > 1000000
+        purge_that_shit
+      end
+    end
+
     response = ExternalApiRequest.new(base_uri: 'https://chaturbate.com/affiliates/api/onlinerooms/?format=json&wm=9RAIT', http_method: 'get')
 
     CamModel.update_all(active: false)
@@ -97,5 +108,10 @@ class CamModelsController < ApplicationController
 
   def delete_inactive_cam_models
     CamModel.where(active: false).destroy_all
+  end
+
+  def purge_that_shit
+    CamModel.destroy_all
+    ActiveRecord::Base.connection.execute("ALTER SEQUENCE cam_models_id_seq RESTART WITH 1")
   end
 end
