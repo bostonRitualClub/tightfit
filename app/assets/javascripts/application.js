@@ -27,6 +27,11 @@ function submitSearch() {
   $("#hidden-form").submit();
 }
 
+function getRandomArbitrary(min, max) {
+  var round = Math.round;
+  return round(Math.random() * (max - min) + min);
+}
+
 $(document).ready(function() {
   $('select').material_select();
   $(window).bindWithDelay('scroll', function(){
@@ -34,11 +39,11 @@ $(document).ready(function() {
       var more_cam_models_url = $('.pagination .next_page').attr('href');
       if (more_cam_models_url && $(window).scrollTop() > $(document).height() - $(window).height() - 500) {
         $('#infinite-scrolling .pagination').html(
-          '<div class="infinite-loader"><img class="loader-icon" src="/assets/loader.gif" alt="loading" title="loading" /><h6>  ...grabbing more models</h6></div>'
+          '<div class="infinite-loader"><img class="loader-icon" src="/assets/loader.gif" alt="loading" title="loading" /><h6>  ...probing more models</h6></div>'
         );
         setTimeout(function(){
           $.getScript(more_cam_models_url);
-        }, 1500);
+        }, getRandomArbitrary(1200, 2500));
       }
     }
   }, 100);

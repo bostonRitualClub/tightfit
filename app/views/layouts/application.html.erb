@@ -25,77 +25,8 @@
     <script src="https://cdn.fluidplayer.com/current/fluidplayer.min.js"></script>
   </head>
   <body>
-    <div class="nav">
-      <div class="navbar">
-        <a id="tightfit" href="/"><img src="assets/tight_fit_logo.png"/></a>
-        <div class="searchbar">
-          <form id="nav-search-input" action="/cams" method="get" onsubmit="submitSearch()">
-            <div class="input-field">
-              <i id="search-icon" class="material-icons prefix">search</i>
-              <input id="input_text" name="search" type="text" value="<%= params[:search] %>" data-length="50">
-              <label for="input_text">Search...</label>
-            </div>
-          </form>
-        </div>
-        <!-- Exoclick direct link -->
-        <a class="explore-button" href="https://syndication.exosrv.com/splash.php?idzone=2822640&return_url=" target="_blank">
-          <span>EXPLORE</span>
-        </a>
-      </div>
-    </div>
-
-    <form id="index-search-input" action="/cams" method="get" onsubmit="submitSearch()">
-      <div class="filters">
-        <div class="filters__age">
-          <div class="input-field">
-            <input id="age_start" name="age_start" type="text" value="<%= params[:age_start] %>" placeholder="18">
-            <input id="age_end" name="age_end" type="text" value="<%= params[:age_end] %>" placeholder="99">
-            <label for="first_name">Age</label>
-          </div>
-        </div>
-        <div class="filters__viewers">
-          <div class="input-field">
-            <input id="view_start" name="view_start" type="text" value="<%= params[:view_start] %>" placeholder="0">
-            <input id="view_end" name="view_end" type="text" value="<%= params[:view_end] %>" placeholder="50000">
-            <label for="first_name">Viewers</label>
-          </div>
-        </div>
-        <div class="filters__gender">
-          <div>
-            <input id="search-female" name="gender[female]" type="checkbox" class="filled-in" value="f"
-                  <%= 'checked' if params.dig(:gender, :female) %>/>
-            <label for="search-female">Female</label>
-          </div>
-          <div>
-            <input id="search-male" name="gender[male]" type="checkbox" class="filled-in" value="m"
-                  <%= 'checked' if params.dig(:gender, :male) %>/>
-            <label for="search-male">Male</label>
-          </div>
-          <div>
-            <input id="search-trans" name="gender[trans]" type="checkbox" class="filled-in" value="t"
-                  <%= 'checked' if params.dig(:gender, :trans) %>/>
-            <label for="search-trans">Trans</label>
-          </div>
-          <div>
-            <input id="search-couple" name="gender[couple]" type="checkbox" class="filled-in" value="c"
-                  <%= 'checked' if params.dig(:gender, :couple) %>/>
-            <label for="search-couple">Couple</label>
-          </div>
-        </div>
-        <div class="filters__ishd">
-          <input id="search-hd" name="is_hd" type="checkbox" class="filled-in">
-          <label for="search-hd">HD only?</label>
-        </div>
-      </div>
-      <div class="submit-button">
-        <button class="btn waves-effect waves-light">Submit
-          <i class="material-icons right">send</i>
-        </button>
-      </div>
-    </form>
-    <hr width="98%">
-    <form id="hidden-form" action="/cams" method="get">
-    </form>
+    <%= render "shared/navbar" %>
+    <%= render "shared/form" %>
     <div class="main-content">
       <%= yield %>
     </div>

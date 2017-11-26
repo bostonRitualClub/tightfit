@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Armata');
 
+.cam-model__content-main{
+  display: flex;
+  flex-direction: column;
+  max-width: 1600px;
+  margin-left: 5%;
+}
+
+.cam-model__content{
+  display: flex;
+}
+
 .cam-model__group{
   display: flex;
   flex-flow: row wrap;
@@ -11,7 +22,8 @@
     height: auto;
 
     @include small {
-      width: 100%;
+      width: 80%;
+      margin: 0 auto;
     }
 
     @include medium{
@@ -19,7 +31,7 @@
     }
 
     @include large{
-      width: 25%;
+      width: 20%;
     }
 
     .hd-icon {
@@ -30,18 +42,23 @@
       z-index: 2;
     }
 
-    .cam-model__details--username{
-      float: left;
+    .cam-model__visible-info{
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      .cam-model__details--username{
+        float: left;
 
-      a{
-        font-family: 'Armata', sans-serif;
-        opacity: 1;
-        color: white;
+        a{
+          font-family: 'Armata', sans-serif;
+          opacity: 1;
+          color: white;
+        }
       }
-    }
 
-    .cam-model__details--current-show{
-      float: right;
+      .cam-model__details--current-show{
+        float: right;
+      }
     }
 
     .cam-model__details{

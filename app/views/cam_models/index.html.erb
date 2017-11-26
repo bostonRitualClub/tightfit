@@ -1,13 +1,20 @@
 <!-- Chaterbates top chat room iframe: (we get $1 per sign up from this) -->
 <!-- <iframe src='https:\/\/chaturbate.com\/affiliates\/in\/?tour=NxHf&campaign=9RAIT&track=embed&bgcolor=transparent&disable_sound=1&embed_video_only=0&target=_parent' height=523 width=850 style='border: none;'></iframe> -->
 
-<div id="cam-model-list">
-  <div class="cam-model__group">
-    <%= render @cam_models %>
+<div class="cam-model__content">
+  <div class="cam-model__content-main">
+    <div id="cam-model-list">
+      <div class="cam-model__group">
+        <%= render @cam_models %>
+      </div>
+    </div>
+    <div id="infinite-scrolling">
+      <%= will_paginate %>
+    </div>
   </div>
-</div>
-<div id="infinite-scrolling">
-  <%= will_paginate %>
+  <div class="cam-model__content-side-banner">
+    <%= render "shared/side_banner" %>
+  </div>
 </div>
 <hr width="98%">
 <div class="ad-videos">

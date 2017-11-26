@@ -13,3 +13,17 @@
 #exoclickVideo1{
   width: 100%;
 }
+
+.cam-model__content-side-banner{
+  margin-left: 5%;
+
+  .side-banner{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    @include small{
+      display: none;
+    }
+  }
+}
