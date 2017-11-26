@@ -20,7 +20,7 @@ class CamModelsController < ApplicationController
       cam_model_list = cam_model_list.where("is_hd = ?", params["is_hd"]) unless params['is_hd'].blank?
     end
 
-    @cam_models = cam_model_list.paginate(page: params[:page], per_page: 60)
+    @cam_models = cam_model_list.paginate(page: params[:page], per_page: 100)
     respond_to do |format|
       format.html
       format.js
