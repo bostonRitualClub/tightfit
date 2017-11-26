@@ -1,8 +1,72 @@
-#nav-search-input {
-  position: absolute;
-  top: 0;
-  left: 380px;
-  width: 50%;
+.nav{
+  background-color: black;
+  width: 100%;
+
+  .navbar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    max-width: 1400px;
+
+    #tightfit{
+      padding: 0 3%;
+
+      img{
+        height: 5rem;
+      }
+
+      @include small{
+        padding: 0;
+        margin: 0 auto;
+      }
+    }
+
+    .searchbar {
+      flex-grow: 1;
+      margin: 0 auto;
+
+      #search-icon {
+        top: 15%;
+        font-size: 2.5rem;
+      }
+
+      @include medium{
+        margin-right: 7%;
+      }
+    }
+
+    .explore-button{
+      padding: 0 2%;
+      margin-left: 5%;
+
+      span{
+        color: white;
+        position: relative;
+        float: left;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &:hover{
+        background-color: $brown-sugar;
+      }
+
+      @include medium {
+        display: none;
+      }
+
+      @include small{
+        display: none;
+      }
+    }
+
+    @include small{
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 5%;
+    }
+  }
 }
 
 .character-counter {
@@ -11,11 +75,59 @@
   top: 0;
 }
 
+
 #index-search-input {
-  padding-top: 2em;
+  padding-top: 2%;
 }
 
-#search-icon{
-  top: 15%;
-  font-size: 2.5rem;
+.filters {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  .filters__age {
+    display: flex;
+  }
+
+  .filters__viewers {
+    display: flex;
+  }
+
+  .filters__gender {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filters__ishd {
+    display: flex;
+  }
+
+  @include small {
+    flex-direction: column;
+  }
+
+}
+
+.submit-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  .btn{
+    margin-right: 2%;
+  }
+}
+
+#age_start,
+#age_end,
+#view_start,
+#view_end {
+  width: 5em !important;
+}
+
+#index-search-input {
+  padding-top: 2em;
 }

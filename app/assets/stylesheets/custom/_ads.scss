@@ -1,0 +1,15 @@
+.ad-videos{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 5%;
+  padding-top: 5%;
+
+  div{
+    margin: 0 5%;
+  }
+}
+
+#exoclickVideo1{
+  width: 100%;
+}

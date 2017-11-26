@@ -1,90 +1,27 @@
 <!-- Chaterbates top chat room iframe: (we get $1 per sign up from this) -->
 <!-- <iframe src='https:\/\/chaturbate.com\/affiliates\/in\/?tour=NxHf&campaign=9RAIT&track=embed&bgcolor=transparent&disable_sound=1&embed_video_only=0&target=_parent' height=523 width=850 style='border: none;'></iframe> -->
-<form id="index-search-input" action="/cams" method="get" onsubmit="submitSearch()">
-  <div class="row">
-    <div class="col s3 m3 l3" style="padding-left: 45px;">
-      <div class="input-field">
-        <input id="age_start" name="age_start" type="text" value="<%= params[:age_start] %>" placeholder="18">
-        <input id="age_end" name="age_end" type="text" value="<%= params[:age_end] %>" placeholder="99">
-        <label for="first_name">Age</label>
-      </div>
-    </div>
-    <div class="col s3 m3 l3">
-      <div class="input-field">
-        <input id="view_start" name="view_start" type="text" value="<%= params[:view_start] %>" placeholder="0">
-        <input id="view_end" name="view_end" type="text" value="<%= params[:view_end] %>" placeholder="50000">
-        <label for="first_name">Viewers</label>
-      </div>
-    </div>
-    <div class="col s3 m3 l3">
-      <div>
-        <input id="search-female" name="gender[female]" type="checkbox" class="filled-in" value="f"
-              <%= 'checked' if params.dig(:gender, :female) %>/>
-        <label for="search-female">Female</label>
-      </div>
-      <div>
-        <input id="search-male" name="gender[male]" type="checkbox" class="filled-in" value="m"
-              <%= 'checked' if params.dig(:gender, :male) %>/>
-        <label for="search-male">Male</label>
-      </div>
-      <div>
-        <input id="search-trans" name="gender[trans]" type="checkbox" class="filled-in" value="t"
-              <%= 'checked' if params.dig(:gender, :trans) %>/>
-        <label for="search-trans">Trans</label>
-      </div>
-      <div>
-        <input id="search-couple" name="gender[couple]" type="checkbox" class="filled-in" value="c"
-              <%= 'checked' if params.dig(:gender, :couple) %>/>
-        <label for="search-couple">Couple</label>
-      </div>
-    </div>
-    <div class="col s3 m3 l3">
-      <input id="search-hd" name="is_hd" type="checkbox" class="filled-in">
-      <label for="search-hd">HD only?</label>
-    </div>
-  </div>
-  <div class="row text-right">
-    <button class="btn waves-effect waves-light">Submit
-      <i class="material-icons right">send</i>
-    </button>
-  </div>
-</form>
-<hr>
-<form id="hidden-form" action="/cams" method="get">
-</form>
 
 <div id="cam-model-list">
   <div class="cam-model__group">
     <%= render @cam_models %>
   </div>
 </div>
-
 <div id="infinite-scrolling">
   <%= will_paginate %>
 </div>
-
-<!-- Activate fluidplayer -->
+<hr width="98%">
 <div class="ad-videos">
-  <video id='exoclickVideo1' controls style="width: 640px; height: 360px;">
-    <source src='exoclick_advideo1.mp4' type='video/mp4' />
-  </video>
-  <script type="text/javascript" src="https://ads.exosrv.com/invideo.js"></script>
-  <script type="text/javascript">
-
-  var exoOpts = {
-    cat: '2',
-    login: 'tightfitcams',
-    idzone_300x250: '2822642',
-    idsite: '698832',
-    preroll: {},
-    pause: {},
-    postroll: {},
-    show_thumb: '1'
-  }
-  var testVideo = fluidPlayer('exoclickVideo1');
-  </script>
-
-  <div id='crakrevenue'>
-    <img src="https://t.frtyt.com/4c04f6f2iq?offer_id=4093&aff_id=58348&bo=2745,2746,2748,2749,2750&file_id=243318" width="1" height="1" />
+  <!-- Activate fluidplayer -->
+  <div>
+    <video id='exoclickVideo1' controls>
+      <source src='exoclick_advideo1.mp4' type='video/mp4' />
+    </video>
+  </div>
+  <div>
+    <script type="text/javascript" src="https://ads.exosrv.com/invideo.js"></script>
+    <script type="text/javascript">var exoOpts = {cat:'2',login:'tightfitcams',idzone_300x250:'2822642',idsite:'698832',preroll:{},pause:{},postroll:{},show_thumb:'1'};var testVideo=fluidPlayer('exoclickVideo1');</script>
+    <div id='crakrevenue'>
+      <img src="https://t.frtyt.com/4c04f6f2iq?offer_id=4093&aff_id=58348&bo=2745,2746,2748,2749,2750&file_id=243318" width="1" height="1" />
+    </div>
   </div>
 </div>

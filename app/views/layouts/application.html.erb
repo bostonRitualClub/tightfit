@@ -25,12 +25,10 @@
     <script src="https://cdn.fluidplayer.com/current/fluidplayer.min.js"></script>
   </head>
   <body>
-    <!-- hide-for-small-only doesn't do anything yet -->
-    <div class="hide-for-small-only">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="/"><img src="assets/tight_fit_logo.png" style="height: 100%;"/></a>
-
+    <div class="nav">
+      <div class="navbar">
+        <a id="tightfit" href="/"><img src="assets/tight_fit_logo.png"/></a>
+        <div class="searchbar">
           <form id="nav-search-input" action="/cams" method="get" onsubmit="submitSearch()">
             <div class="input-field">
               <i id="search-icon" class="material-icons prefix">search</i>
@@ -38,39 +36,68 @@
               <label for="input_text">Search...</label>
             </div>
           </form>
-
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <!-- Exoclick direct link -->
-            <li><strong><a href="https://syndication.exosrv.com/splash.php?idzone=2822640&return_url=" target="_blank">EXPLORE</a></strong></li>
-          </ul>
         </div>
-      </nav>
+        <!-- Exoclick direct link -->
+        <a class="explore-button" href="https://syndication.exosrv.com/splash.php?idzone=2822640&return_url=" target="_blank">
+          <span>EXPLORE</span>
+        </a>
+      </div>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col m11">
-          <%= yield %>
+    <form id="index-search-input" action="/cams" method="get" onsubmit="submitSearch()">
+      <div class="filters">
+        <div class="filters__age">
+          <div class="input-field">
+            <input id="age_start" name="age_start" type="text" value="<%= params[:age_start] %>" placeholder="18">
+            <input id="age_end" name="age_end" type="text" value="<%= params[:age_end] %>" placeholder="99">
+            <label for="first_name">Age</label>
+          </div>
         </div>
-        <div class="col m1">
-          <!-- <p>Hate popups? Refer a friend and we'll disable them for you.</p> -->
-          <div class="side-banner">
-            <!-- AWEmpire 1 -->
-            <div data-awe-container-id="791140" style="display:inline-block;width:160px;height:600px;"></div>
-            <script src="//awept.com/embed/vb?c=791140&categoryName=girl&pageName=listpage&color=brown_yellow&psid=tightfitcams&pstool=316_2&siteId=jasmin&cobrandId=&psprogram=pps&campaign_id=&subAffId={SUBAFFID}"></script>
-
-            <!-- AWEmpire 2 -->
-            <a title="Live webcam sex! More than 20000 Hot Girls are waiting for you!" href="//awejmp.com/?siteId=jasmin&cobrandId=&superCategoryName=[--SUPERCATEGORY--]&categoryName=girl&pageName=listpage&prm[psid]=tightfitcams&prm[pstool]=201_2&prm[psprogram]=pps&prm[campaign_id]=&subAffId={SUBAFFID}" align="center" target="_blank">
-              <img class="img" alt="Live webcam sex! More than 20000 Hot Girls are waiting for you!" src="//static1.awestatic.com/npt/banner/s1_girl/160xx600.jpg?sid=9300fc3b&psid=tightfitcams&pstool=201_2&psprogram=pps&campaign_id=" border="0" />
-            </a>
-
-            <!-- Exoclick Game Ad -->
-            <script type="text/javascript">var ad_idzone = "2808188", ad_width = "160", ad_height = "600";</script>
-             <script type="text/javascript" src="https://ads.exosrv.com/ads.js"></script>
-             <noscript><a href="https://main.exosrv.com/img-click.php?idzone=2808188" target="_blank"><img src="https://syndication.exosrv.com/ads-iframe-display.php?idzone=2808188&output=img&type=160x600" width="160" height="600"></a></noscript>
-           </div>
+        <div class="filters__viewers">
+          <div class="input-field">
+            <input id="view_start" name="view_start" type="text" value="<%= params[:view_start] %>" placeholder="0">
+            <input id="view_end" name="view_end" type="text" value="<%= params[:view_end] %>" placeholder="50000">
+            <label for="first_name">Viewers</label>
+          </div>
+        </div>
+        <div class="filters__gender">
+          <div>
+            <input id="search-female" name="gender[female]" type="checkbox" class="filled-in" value="f"
+                  <%= 'checked' if params.dig(:gender, :female) %>/>
+            <label for="search-female">Female</label>
+          </div>
+          <div>
+            <input id="search-male" name="gender[male]" type="checkbox" class="filled-in" value="m"
+                  <%= 'checked' if params.dig(:gender, :male) %>/>
+            <label for="search-male">Male</label>
+          </div>
+          <div>
+            <input id="search-trans" name="gender[trans]" type="checkbox" class="filled-in" value="t"
+                  <%= 'checked' if params.dig(:gender, :trans) %>/>
+            <label for="search-trans">Trans</label>
+          </div>
+          <div>
+            <input id="search-couple" name="gender[couple]" type="checkbox" class="filled-in" value="c"
+                  <%= 'checked' if params.dig(:gender, :couple) %>/>
+            <label for="search-couple">Couple</label>
+          </div>
+        </div>
+        <div class="filters__ishd">
+          <input id="search-hd" name="is_hd" type="checkbox" class="filled-in">
+          <label for="search-hd">HD only?</label>
         </div>
       </div>
+      <div class="submit-button">
+        <button class="btn waves-effect waves-light">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </form>
+    <hr width="98%">
+    <form id="hidden-form" action="/cams" method="get">
+    </form>
+    <div class="main-content">
+      <%= yield %>
     </div>
   </body>
 </html>

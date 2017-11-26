@@ -1,4 +1,3 @@
-
 // https://coolors.co/f1ffe7-9e9e9e-54442b-a9714b-e8985e
 $shale-white: #F1FFE7;
 $placeholder-grey: #9e9e9e;
@@ -10,3 +9,28 @@ $big-foot-feet: #E8985E;
 $pale-spring-green: #57A773;
 $steel-grey: #536271;
 $privacy-red: #B0413E;
+
+$small-max: 599px;
+$medium-min: 600px;
+$medium-max: 1200px;
+$large-min: 1201px;
+
+
+// mixins
+@mixin small {
+  @media (min-width: 2px) and (max-width: #{$small-max}) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: #{$medium-min}) and (max-width: #{$medium-max}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: #{$large-min}) {
+    @content;
+  }
+}
