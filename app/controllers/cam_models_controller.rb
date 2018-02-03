@@ -32,12 +32,12 @@ class CamModelsController < ApplicationController
     @cam_models = CamModel.where(gender: 'f', active: true).sample(20)
   end
 
+  private
+
   def cam_model_refresh
     get_cam_models
     redirect_to action: "index"
   end
-
-  private
 
   def get_cam_models
     unless CamModel.maximum(:id).nil?
