@@ -1,7 +1,7 @@
 class CamModelsController < ApplicationController
 
   def index
-    cam_model_list = CamModel.all
+    cam_model_list = CamModel.where(active: true)
     params.permit(:age, :chat_room_url_revshare, :image_url, :is_hd, :num_followers, :num_users, :room_subject, :username, :chat_room_url, :current_show, :gender, :iframe_embed_revshare, :iframe_embed, :is_new, :location, :seconds_online, :active)
 
     if params["gender"]
@@ -29,11 +29,7 @@ class CamModelsController < ApplicationController
 
   def show
     @cam_model = CamModel.find(params[:id])
-    @cam_models = CamModel.where(gender: 'f').sample(20)
-  end
-
-  def cam_model
-    render "show"
+    @cam_models = CamModel.where(gender: 'f', active: true).sample(20)
   end
 
   def cam_model_refresh
