@@ -41,7 +41,7 @@ class CamModelsController < ApplicationController
 
   def get_cam_models
     unless CamModel.maximum(:id).nil?
-      if CamModel.maximum(:id) > 1000000
+      if CamModel.all.count > 100000
         purge_that_shit
       end
     end
